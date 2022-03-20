@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_inicio">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.youngdred.brujowines.ui.home.HomeFragment"
+        android:id="@+id/navigation_inicio"
+        android:name="com.youngdred.brujowines.ui.inicio.InicioFragment"
         android:label="@string/title_inicio"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_inicio" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.youngdred.brujowines.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_vinos"
+        android:name="com.youngdred.brujowines.ui.vinos.VinosFragment"
         android:label="@string/title_vinos"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_vinos" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.youngdred.brujowines.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_usuario"
+        android:name="com.youngdred.brujowines.ui.usuario.UsuarioFragment"
         android:label="@string/title_usuario"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_usuario" />
 </navigation>

@@ -1,16 +1,16 @@
-package com.youngdred.brujowines.ui.dashboard;
+package com.youngdred.brujowines.ui.inicio;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class InicioViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public InicioViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("Este es el fragmento de inicio");
     }
 
     public LiveData<String> getText() {

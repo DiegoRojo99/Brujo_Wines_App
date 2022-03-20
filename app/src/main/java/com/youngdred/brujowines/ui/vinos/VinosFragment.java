@@ -1,4 +1,4 @@
-package com.youngdred.brujowines.ui.notifications;
+package com.youngdred.brujowines.ui.vinos;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.youngdred.brujowines.R;
-import com.youngdred.brujowines.databinding.FragmentNotificationsBinding;
+import com.youngdred.brujowines.databinding.FragmentVinosBinding;
 
-public class NotificationsFragment extends Fragment {
+public class VinosFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
-    private FragmentNotificationsBinding binding;
+    private VinosViewModel vinosViewModel;
+    private FragmentVinosBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+        vinosViewModel =
+                new ViewModelProvider(this).get(VinosViewModel.class);
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = FragmentVinosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = binding.textVinos;
+        vinosViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
