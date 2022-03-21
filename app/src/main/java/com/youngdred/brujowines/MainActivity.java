@@ -3,6 +3,7 @@ package com.youngdred.brujowines;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        ImageButton titaniaBlancoButton=findViewById(R.id.ib_inicio_titania_blanco);
-        ImageButton titaniaRosadoButton=findViewById(R.id.ib_inicio_titania_rosado);
-        ImageButton titaniaTintoButton=findViewById(R.id.ib_inicio_titania_tinto);
+        Button titaniaBlancoButtonVinos=findViewById(R.id.button_vinos_titania_blanco);
+        Button titaniaRosadoButtonVinos=findViewById(R.id.button_vinos_titania_rosado);
+        Button titaniaTintoButtonVinos=findViewById(R.id.button_vinos_titania_tinto);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -40,13 +41,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        titaniaBlancoButton.setOnClickListener((View v) ->
-            cambiarTitania(TitaniaBlancoActivity.class)
-        );
 
-        titaniaRosadoButton.setOnClickListener((View v) ->
-            cambiarTitania(TitaniaBlancoActivity.class)
-        );
+
     }
 
     public void cambiarTitania(Class titania){
