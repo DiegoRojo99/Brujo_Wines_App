@@ -67,12 +67,14 @@ public class InicioFragment extends Fragment {
     //Este metodo cambia a la actividad del vino correspondiente
     //TODO Falta añadir las actividades de tinto y rosado
     public void cambiarActividadTitania(String vino){
-        if (vino=="tinto"){
-
-        }else if(vino=="blanco"){
-            getActivity().startActivity(new Intent(getActivity(), TitaniaBlancoActivity.class));
-        }else if(vino=="rosado"){
-
+        switch (vino){
+            case "tinto":
+                break;
+            case "blanco":
+                getActivity().startActivity(new Intent(getActivity(), TitaniaBlancoActivity.class));
+                break;
+            case "rosado":
+                break;
         }
     }
 

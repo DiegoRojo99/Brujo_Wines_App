@@ -7,16 +7,205 @@
     tools:context=".ui.vinos.VinosFragment">
 
     <TextView
-        android:id="@+id/text_vinos"
+    android:id="@+id/text_vinos"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:textAlignment="center"
+    android:textSize="24sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/text_vinos">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_inicio_titania_logo"
+                android:contentDescription="@string/titania_logo_text"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/titania_logo" />
+
+            <LinearLayout
+                android:id="@+id/ll_vinos_todos_vinos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="64dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_vinos_titania_blanco"
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="32dp">
+
+                    <ImageView
+                        android:id="@+id/iv_vinos_titania_blanco"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/titania_blanco"
+                        android:src="@drawable/titania_blanco" />
+
+                    <LinearLayout
+                    android:id="@+id/ll_vinos_titania_blanco_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="64dp">
+
+                    <TextView
+                        android:id="@+id/tv_vinos_titania_blanco"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="8dp"
+                        android:textSize="20sp"
+                        android:text="@string/titania_blanco"
+                        android:contentDescription="@string/titania_blanco"/>
+
+                    <Button
+                        android:id="@+id/button_vinos_titania_blanco"
+                        android:layout_width="wrap_content"
+                        android:layout_height="96dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:text="@string/titania_blanco" />
+
+                </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_vinos_titania_rosado"
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="32dp">
+
+                    <ImageView
+                        android:id="@+id/iv_vinos_titania_rosado"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/titania_rosado"
+                        android:src="@drawable/titania_rosado" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_vinos_titania_rosado_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="320dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="64dp">
+
+                        <TextView
+                            android:id="@+id/tv_vinos_titania_rosado"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingEnd="8dp"
+                            android:textSize="20sp"
+                            android:text="@string/titania_rosado"
+                            android:contentDescription="@string/titania_rosado"/>
+
+                        <Button
+                            android:id="@+id/button_vinos_titania_rosado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="96dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="@string/titania_rosado" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_vinos_titania_tinto"
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="32dp">
+
+                    <ImageView
+                        android:id="@+id/iv_vinos_titania_tinto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/titania_tinto"
+                        android:src="@drawable/titania_tinto" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_vinos_titania_tinto_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="320dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="64dp">
+
+                        <TextView
+                            android:id="@+id/tv_vinos_titania_tinto"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingEnd="8dp"
+                            android:textSize="20sp"
+                            android:text="@string/titania_tinto"
+                            android:contentDescription="@string/titania_tinto"/>
+
+                        <Button
+                            android:id="@+id/button_vinos_titania_tinto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="96dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="@string/titania_tinto" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textInicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
