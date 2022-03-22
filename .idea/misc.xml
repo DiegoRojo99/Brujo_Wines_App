@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.19375" />
+        <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/drawable/ic_galeria_black_24dp.xml" value="0.3416666666666667" />
         <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.19375" />
         <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19375" />
         <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.19375" />
@@ -13,8 +14,11 @@
         <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/drawable/ic_vino_black_24dp.xml" value="0.19375" />
         <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/drawable/ic_vino_black_48dp.xml" value="0.3416666666666667" />
         <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/drawable/ic_vino_foreground.xml" value="0.19375" />
+        <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/layout/activity_login.xml" value="0.16847826086956522" />
         <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/layout/activity_titania_blanco.xml" value="0.25" />
+        <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/layout/dos_fotos_galeria.xml" value="0.15830800405268491" />
+        <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/layout/fragment_galeria.xml" value="0.1" />
         <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/layout/fragment_home.xml" value="0.15830800405268491" />
         <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/layout/fragment_inicio.xml" value="0.1" />
         <entry key="..\:/Users/diegu/AndroidStudioProjects/BrujoWines/app/src/main/res/layout/fragment_notifications.xml" value="0.16847826086956522" />

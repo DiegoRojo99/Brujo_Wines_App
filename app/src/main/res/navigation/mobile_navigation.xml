@@ -18,8 +18,15 @@
         tools:layout="@layout/fragment_vinos" />
 
     <fragment
+        android:id="@+id/navigation_galeria"
+        android:name="com.youngdred.brujowines.ui.galeria.GaleriaFragment"
+        android:label="@string/title_galeria"
+        tools:layout="@layout/fragment_galeria" />
+
+    <fragment
         android:id="@+id/navigation_usuario"
         android:name="com.youngdred.brujowines.ui.usuario.UsuarioFragment"
         android:label="@string/title_usuario"
         tools:layout="@layout/fragment_usuario" />
+
 </navigation>

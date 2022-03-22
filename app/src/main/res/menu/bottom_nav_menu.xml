@@ -12,6 +12,11 @@
         android:title="@string/title_vinos" />
 
     <item
+        android:id="@+id/navigation_galeria"
+        android:icon="@drawable/ic_image_24"
+        android:title="@string/title_galeria" />
+
+    <item
         android:id="@+id/navigation_usuario"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="@string/title_usuario" />

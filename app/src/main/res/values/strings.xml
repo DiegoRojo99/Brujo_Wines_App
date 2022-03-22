@@ -3,6 +3,7 @@
     <string name="title_inicio">Inicio</string>
     <string name="title_vinos">Vinos</string>
     <string name="title_usuario">Usuario</string>
+    <string name="title_galeria">Galeria</string>
 
     <string name="cover_image">Imagen de viñas</string>
     <string name="icono_vino">Icono de Vino</string>
@@ -11,4 +12,16 @@
     <string name="titania_tinto">Titania Tinto</string>
     <string name="titania_rosado">Titania Rosado</string>
     <string name="titania_logo_text">Logo de Titania</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string name="Galeria">Galeria</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
