@@ -10,10 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BrujoWines">
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="true"
-            android:label="@string/title_activity_login" />
-        <activity
             android:name=".TitaniaBlancoActivity"
             android:exported="true" />
         <activity
