@@ -7,7 +7,8 @@
 
 
 
-    <string name="nombre">Nombre y Apellido</string>
+    <string name="nombre">Nombre</string>
+    <string name="sign_out">Cerrar Sesión</string>
 
     <string name="e_mail">E-Mail</string>
     <string name="password">Contraseña</string>

@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button loginButton;
 
     private FirebaseAuth mAuth;
+
     private ProgressBar progressBar;
 
     @Override
@@ -42,6 +44,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         etPassword=(EditText) findViewById(R.id.et_login_password);
 
         progressBar=(ProgressBar) findViewById(R.id.progressBarLogin);
+
+        mAuth = FirebaseAuth.getInstance();
 
     }
 
@@ -81,8 +85,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
+
         progressBar.setVisibility(View.VISIBLE);
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){

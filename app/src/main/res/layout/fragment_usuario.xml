@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="20sp"
@@ -20,14 +19,79 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_login"
+
+    <TextView
+        android:id="@+id/tv_usuario_saludo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:textSize="20sp"
+        android:text="Hola"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_usuario_email_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Correo:"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tv_usuario_saludo"
+        app:layout_constraintTop_toBottomOf="@id/tv_usuario_saludo" />
+
+    <TextView
+        android:id="@+id/tv_usuario_email_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toStartOf="@id/tv_usuario_email_texto"
+        app:layout_constraintTop_toBottomOf="@id/tv_usuario_email_texto" />
+
+    <TextView
+        android:id="@+id/tv_usuario_nombre_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Nombre:"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tv_usuario_email_texto"
+        app:layout_constraintTop_toBottomOf="@id/tv_usuario_email_texto" />
+
+    <TextView
+        android:id="@+id/tv_usuario_nombre_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toStartOf="@id/tv_usuario_nombre_texto"
+        app:layout_constraintTop_toBottomOf="@id/tv_usuario_nombre_texto" />
+
+
+    <Button
+        android:id="@+id/btn_usuario_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/action_sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_usuario" />
+
+    <Button
+        android:id="@+id/btn_usuario_sign_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/sign_out"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_usuario_login" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
