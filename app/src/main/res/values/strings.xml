@@ -5,6 +5,13 @@
     <string name="title_usuario">Usuario</string>
     <string name="title_galeria">Galeria</string>
 
+
+    <string name="e_mail">E-Mail</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Login</string>
+    <string name="password_olvidada">¿Has olvidado la contraseña?</string>
+    <string name="registrar">Registrar</string>
+
     <string name="cover_image">Imagen de viñas</string>
     <string name="icono_vino">Icono de Vino</string>
     <string name="titania_blanco">Titania Blanco</string>
