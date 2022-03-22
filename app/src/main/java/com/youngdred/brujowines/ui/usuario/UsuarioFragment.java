@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.youngdred.brujowines.LoginActivity;
 import com.youngdred.brujowines.MainActivity;
 import com.youngdred.brujowines.TitaniaBlancoActivity;
 import com.youngdred.brujowines.databinding.FragmentUsuarioBinding;
@@ -33,7 +34,7 @@ public class UsuarioFragment extends Fragment {
 
         Button loginButton=binding.btnLogin;
         loginButton.setOnClickListener(view -> {
-            getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+            getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
         });
 
         final TextView textView = binding.textUsuario;

@@ -7,7 +7,7 @@
 
 
 
-    <string name="nombre">Nombre</string>
+    <string name="nombre">Nombre y Apellido</string>
 
     <string name="e_mail">E-Mail</string>
     <string name="password">Contraseña</string>

@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
     <TextView
-        android:id="@+id/password_olvidada"
+        android:id="@+id/tv_login_password_olvidada"
         android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:text="@string/password_olvidada"
@@ -76,14 +76,15 @@
         />
 
     <TextView
+        android:id="@+id/tv_login_registrar"
         android:layout_width="128dp"
         android:layout_height="0dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="25dp"
         android:text="@string/registrar"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/password_olvidada"
-        app:layout_constraintStart_toEndOf="@id/password_olvidada"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_login_password_olvidada"
+        app:layout_constraintStart_toEndOf="@id/tv_login_password_olvidada"
         app:layout_constraintTop_toBottomOf="@id/btn_login_brujo_wines_login" />
 
     <ProgressBar
