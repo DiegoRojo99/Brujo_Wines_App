@@ -6,6 +6,9 @@
     <string name="title_galeria">Galeria</string>
 
 
+
+    <string name="nombre">Nombre</string>
+
     <string name="e_mail">E-Mail</string>
     <string name="password">Contraseña</string>
     <string name="login">Login</string>
