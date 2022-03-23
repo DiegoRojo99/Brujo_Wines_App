@@ -32,7 +32,7 @@ public class ReservarActivity extends AppCompatActivity {
 
     TimePickerDialog timePickerDialog;
 
-    EditText personasEt, fechaEt;
+    EditText personasEt, fechaEt, tiempoEt;
     ToggleButton visitaCataButton;
     Button reservaButton;
 
@@ -45,6 +45,8 @@ public class ReservarActivity extends AppCompatActivity {
 
     private int mYear, mMonth, mDay;
 
+    private int mHour, mMinute;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,13 +55,35 @@ public class ReservarActivity extends AppCompatActivity {
         fechaEt=(EditText) findViewById(R.id.et_fecha_reserva_date);
         fechaEt.setOnClickListener(v -> sacarCalendario());
 
+        tiempoEt=(EditText)findViewById(R.id.et_fecha_reserva_tiempo);
+        tiempoEt.setOnClickListener(view -> sacarReloj());
+
         reservaButton=(Button) findViewById(R.id.btn_reservar);
         reservaButton.setOnClickListener(view -> realizarReserva());
 
     }
 
-    public void sacarCalendario(){
+    public void sacarReloj(){
+        final Calendar calendar = Calendar.getInstance ();
 
+        final TimePickerDialog timePickerDialog = new TimePickerDialog ( this, new TimePickerDialog.OnTimeSetListener () {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//am pm mode
+//                    String AM_PM;
+//                    if (hourOfDay>=0&&hourOfDay<12){
+//                        AM_PM=" AM";
+//                    }else {
+//                        AM_PM=" PM";
+//                    }
+                    tiempoEt.setText ( hourOfDay + ":" + minute);
+            }
+        }, mHour, mMinute, true );
+
+        timePickerDialog.show ();
+    }
+
+    public void sacarCalendario(){
 
         final Calendar calendar = Calendar.getInstance ();
         mYear = calendar.get ( Calendar.YEAR );
@@ -86,13 +110,21 @@ public class ReservarActivity extends AppCompatActivity {
         Boolean cataReserva=visitaCataButton.isChecked();
 
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat formateoHora = new SimpleDateFormat("mm:hh");
+
         // Make sure user insert date into edittext in this format.
         Date dateObject;
         Reserva res= new Reserva(null,numeroPersonas,cataReserva);
 
         try{
             String dob_var=(fechaEt.getText().toString());
+            String hourString=(tiempoEt.getText().toString());
+
             dateObject = formatter.parse(dob_var);
+            int hour=Integer.parseInt(hourString.substring(0,2));
+            int minutes=Integer.parseInt(hourString.substring(3,5));
+            dateObject.setHours(hour);
+            dateObject.setMinutes(minutes);
             res.fechaReserva=dateObject;
 
         } catch (java.text.ParseException e) {

@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.youngdred.brujowines.LoginActivity;
 import com.youngdred.brujowines.MainActivity;
+import com.youngdred.brujowines.Reserva;
 import com.youngdred.brujowines.TitaniaBlancoActivity;
 import com.youngdred.brujowines.Usuario;
 import com.youngdred.brujowines.databinding.FragmentUsuarioBinding;
@@ -35,10 +36,11 @@ public class UsuarioFragment extends Fragment {
 
     private FirebaseUser usuario;
     private DatabaseReference reference;
-
+    private DatabaseReference reservasReference;
     private String userId;
 
     private Button logOut;
+    private TextView reservaFechaInfo, reservaTipoInfo;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -57,10 +59,14 @@ public class UsuarioFragment extends Fragment {
         usuario=FirebaseAuth.getInstance().getCurrentUser();
         reference= FirebaseDatabase.getInstance().getReference("Users");
         userId=usuario.getUid();
+        reservasReference= FirebaseDatabase.getInstance().getReference("Users").child(userId).child("reservas");
 
         final TextView saludoTV=(TextView) binding.tvUsuarioSaludo;
         final TextView emailTV=(TextView) binding.tvUsuarioEmailUsuario;
         final TextView nombreTV=(TextView) binding.tvUsuarioNombreUsuario;
+
+        reservaFechaInfo=(TextView) binding.tvUsuarioReservaFechaInfo;
+        reservaTipoInfo=(TextView) binding.tvUsuarioReservaTipoInfo;
 
         reference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -74,6 +80,30 @@ public class UsuarioFragment extends Fragment {
                     saludoTV.setText("¡Bienvenido, "+nombre+"!");
                     nombreTV.setText(nombre);
                     emailTV.setText(email);
+                }else{
+                    saludoTV.setText("Esto no funciona");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(),"Algo ha salido mal",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        reservasReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Reserva res=snapshot.getValue(Reserva.class);
+
+                if(res!=null){
+                    reservaFechaInfo.setText(res.fechaReserva.toString());
+                    if(res.tipo){
+                        reservaTipoInfo.setText("Cata de vinos");
+                    }else{
+                        reservaTipoInfo.setText("Visita a la bodega");
+                    }
+
                 }else{
                     saludoTV.setText("Esto no funciona");
                 }

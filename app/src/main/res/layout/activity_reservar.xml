@@ -62,6 +62,22 @@
             android:inputType="date"
             android:minHeight="48dp" />
 
+        <TextView
+            android:id="@+id/tv_fecha_reserva_tiempo_texto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fecha" />
+
+        <EditText
+            android:id="@+id/et_fecha_reserva_tiempo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="15"
+            android:focusable="false"
+            android:hint="HH:MM"
+            android:inputType="date"
+            android:minHeight="48dp" />
+
         <Button
             android:id="@+id/btn_reservar"
             android:layout_width="match_parent"
