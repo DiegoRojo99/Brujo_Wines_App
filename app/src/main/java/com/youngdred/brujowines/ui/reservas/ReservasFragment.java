@@ -31,10 +31,9 @@ public class ReservasFragment extends Fragment {
 
         visitaBodegaTV = (TextView) binding.includeVisitaBodega.tvVisitaBodegaDesc;
 
-
         visitaBodegaButton = binding.includeVisitaBodega.btnVisitaBodega;
-        visitaBodegaButton.setOnClickListener(view -> startActivity(new Intent(getActivity(), ReservarActivity.class)));
-
+        visitaBodegaButton.setOnClickListener(view ->
+                startActivity(new Intent(getActivity(), ReservarActivity.class)));
 
         return root;
     }
