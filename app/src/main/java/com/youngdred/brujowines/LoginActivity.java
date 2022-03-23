@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,6 +30,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
 
     private ProgressBar progressBar;
+
+
+    private FirebaseUser usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +53,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         passwordOlvidada=(TextView)findViewById(R.id.tv_login_password_olvidada);
         passwordOlvidada.setOnClickListener(this);
 
-
         mAuth = FirebaseAuth.getInstance();
+        checkIfUserIsLoggedIn();
 
+    }
+
+    public void checkIfUserIsLoggedIn(){
+
+        try {
+            usuario=FirebaseAuth.getInstance().getCurrentUser();
+            if(usuario.isEmailVerified()){
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            }
+        }catch (Exception e){
+
+        }
     }
 
     @Override
