@@ -3,11 +3,13 @@ package com.youngdred.brujowines;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -18,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class PasswordOlvidadaActivity extends AppCompatActivity {
 
     private EditText emailEt;
+    private ImageView logo;
     private Button resetPasswordButton;
     private ProgressBar progressBar;
 
@@ -34,12 +37,10 @@ public class PasswordOlvidadaActivity extends AppCompatActivity {
 
         auth=FirebaseAuth.getInstance();
 
-        resetPasswordButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                resetPassword();
-            }
-        });
+        logo=(ImageView)findViewById(R.id.iv_password_olvidada_app_name);
+        logo.setOnClickListener(view -> startActivity(new Intent(PasswordOlvidadaActivity.this, LoginActivity.class)));
+
+        resetPasswordButton.setOnClickListener(v -> resetPassword());
     }
     
     private void resetPassword(){

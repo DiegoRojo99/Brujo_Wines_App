@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private TextView banner;
+    private ImageView banner;
     private Button registrarUsuario;
     private EditText etNombre, etEmail, etPassword;
     private ProgressBar progressBar;
@@ -35,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         mAuth = FirebaseAuth.getInstance();
 
-        banner = (TextView) findViewById(R.id.tv_register_app_name);
+        banner = (ImageView) findViewById(R.id.iv_register_app_name);
         banner.setOnClickListener(this);
 
         registrarUsuario=(Button)findViewById(R.id.btn_registrar_brujo_wines_registrar);
@@ -51,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
 
-        if(view.getId()==R.id.tv_register_app_name){
+        if(view.getId()==R.id.iv_register_app_name){
             startActivity(new Intent(this, MainActivity.class));
         }else if(view.getId()==R.id.btn_registrar_brujo_wines_registrar){
             registrarUsuario();

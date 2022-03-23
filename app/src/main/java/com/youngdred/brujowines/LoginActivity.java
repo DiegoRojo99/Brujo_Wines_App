@@ -107,6 +107,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 }else{
                     Toast.makeText(LoginActivity.this, "No se ha podido iniciar sesión. Comprueba tus datos",Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
                 }
             }
         });
