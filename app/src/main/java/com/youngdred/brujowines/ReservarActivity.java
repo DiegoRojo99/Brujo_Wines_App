@@ -83,28 +83,16 @@ public class ReservarActivity extends AppCompatActivity {
         int numeroPersonas=Integer.parseInt(personasEt.getText().toString());
 
         visitaCataButton=(ToggleButton) findViewById(R.id.toggleButtonCataVisita);
-        Boolean cataReserva=true;
-
+        Boolean cataReserva=visitaCataButton.isChecked();
 
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         // Make sure user insert date into edittext in this format.
         Date dateObject;
-
-        String date="";
-        String time="";
-
         Reserva res= new Reserva(null,numeroPersonas,cataReserva);
-
 
         try{
             String dob_var=(fechaEt.getText().toString());
             dateObject = formatter.parse(dob_var);
-
-            date = new SimpleDateFormat("dd/mm/yyyy").format(dateObject);
-
-            time = new SimpleDateFormat("h:mmaa").format(dateObject);
-
-
             res.fechaReserva=dateObject;
 
         } catch (java.text.ParseException e) {
