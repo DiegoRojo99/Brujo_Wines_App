@@ -104,8 +104,6 @@ public class UsuarioFragment extends Fragment {
                         reservaTipoInfo.setText("Visita a la bodega");
                     }
 
-                }else{
-                    saludoTV.setText("Esto no funciona");
                 }
             }
 

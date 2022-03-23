@@ -104,33 +104,63 @@ public class ReservarActivity extends AppCompatActivity {
     private void realizarReserva(){
 
         personasEt=(EditText) findViewById(R.id.et_numero_personas_number);
-        int numeroPersonas=Integer.parseInt(personasEt.getText().toString());
+        int numeroPersonas=0;
+        numeroPersonas=Integer.parseInt(personasEt.getText().toString().trim());
+
+        if(numeroPersonas<0&&numeroPersonas>10){
+            personasEt.setError("El numero tiene que estar entre 1 y 10");
+            personasEt.requestFocus();
+            numeroPersonas=0;
+            return;
+        }
+
 
         visitaCataButton=(ToggleButton) findViewById(R.id.toggleButtonCataVisita);
         Boolean cataReserva=visitaCataButton.isChecked();
 
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        DateFormat formateoHora = new SimpleDateFormat("mm:hh");
 
         // Make sure user insert date into edittext in this format.
         Date dateObject;
         Reserva res= new Reserva(null,numeroPersonas,cataReserva);
 
         try{
-            String dob_var=(fechaEt.getText().toString());
-            String hourString=(tiempoEt.getText().toString());
+
+            String dob_var=(fechaEt.getText().toString().trim());
+            String hourString=(tiempoEt.getText().toString().trim());
+
+            if(dob_var.isEmpty()){
+                fechaEt.setError("Introduce una fecha");
+                fechaEt.requestFocus();
+                return;
+            }
+            if(hourString.isEmpty()){
+                tiempoEt.setError("Introduce una hora");
+                tiempoEt.requestFocus();
+                return;
+            }
 
             dateObject = formatter.parse(dob_var);
-            int hour=Integer.parseInt(hourString.substring(0,2));
-            int minutes=Integer.parseInt(hourString.substring(3,5));
-            dateObject.setHours(hour);
-            dateObject.setMinutes(minutes);
+
+            try {
+
+                int index=-1;
+                index = hourString.indexOf(":");
+                int hour=Integer.parseInt(hourString.substring(0,index));
+                int minutes=Integer.parseInt(hourString.substring(index+1,hourString.length()));
+
+                dateObject.setHours(hour);
+                dateObject.setMinutes(minutes);
+
+            }catch (Exception e){
+
+            }
+
             res.fechaReserva=dateObject;
 
         } catch (java.text.ParseException e) {
             e.printStackTrace();
         }
-
 
         usuario= FirebaseAuth.getInstance().getCurrentUser();
         reference= FirebaseDatabase.getInstance().getReference("Users");
