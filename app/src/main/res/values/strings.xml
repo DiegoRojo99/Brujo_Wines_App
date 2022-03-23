@@ -6,9 +6,10 @@
     <string name="title_galeria">Galeria</string>
 
 
-
     <string name="nombre">Nombre</string>
     <string name="sign_out">Cerrar Sesión</string>
+
+    <string name="restablecer_password">Restablecer Contraseña</string>
 
     <string name="e_mail">E-Mail</string>
     <string name="password">Contraseña</string>

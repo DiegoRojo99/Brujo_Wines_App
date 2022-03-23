@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView registrar;
+    private TextView registrar, passwordOlvidada;
     private EditText etEmail, etPassword;
     private Button loginButton;
 
@@ -45,6 +45,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         progressBar=(ProgressBar) findViewById(R.id.progressBarLogin);
 
+        passwordOlvidada=(TextView)findViewById(R.id.tv_login_password_olvidada);
+        passwordOlvidada.setOnClickListener(this);
+
+
         mAuth = FirebaseAuth.getInstance();
 
     }
@@ -55,6 +59,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(this,RegisterActivity.class));
             }else if(v.getId()==R.id.btn_login_brujo_wines_login){
                 loginUsuario();
+            }else if(v.getId()==R.id.tv_login_password_olvidada){
+                startActivity(new Intent(this, PasswordOlvidadaActivity.class));
             }
 
     }
@@ -92,7 +98,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+                    if(user.isEmailVerified()){
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    }else{
+                        user.sendEmailVerification();
+                        Toast.makeText(LoginActivity.this, "Compruebe su correo para verificar su cuenta",Toast.LENGTH_LONG).show();
+                    }
                 }else{
                     Toast.makeText(LoginActivity.this, "No se ha podido iniciar sesión. Comprueba tus datos",Toast.LENGTH_LONG).show();
                 }

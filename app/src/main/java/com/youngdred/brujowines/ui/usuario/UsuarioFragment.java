@@ -56,7 +56,7 @@ public class UsuarioFragment extends Fragment {
         Button signOutButton=binding.btnUsuarioSignOut;
         signOutButton.setOnClickListener(view -> {
             FirebaseAuth.getInstance().signOut();
-            getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+            getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
         });
 
         usuario=FirebaseAuth.getInstance().getCurrentUser();
