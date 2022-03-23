@@ -25,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -107,7 +108,7 @@ public class ReservarActivity extends AppCompatActivity {
         int numeroPersonas=0;
         numeroPersonas=Integer.parseInt(personasEt.getText().toString().trim());
 
-        if(numeroPersonas<0&&numeroPersonas>10){
+        if(numeroPersonas<0||numeroPersonas>10){
             personasEt.setError("El numero tiene que estar entre 1 y 10");
             personasEt.requestFocus();
             numeroPersonas=0;
@@ -129,6 +130,8 @@ public class ReservarActivity extends AppCompatActivity {
             String dob_var=(fechaEt.getText().toString().trim());
             String hourString=(tiempoEt.getText().toString().trim());
 
+            dateObject = formatter.parse(dob_var);
+
             if(dob_var.isEmpty()){
                 fechaEt.setError("Introduce una fecha");
                 fechaEt.requestFocus();
@@ -140,7 +143,6 @@ public class ReservarActivity extends AppCompatActivity {
                 return;
             }
 
-            dateObject = formatter.parse(dob_var);
 
             try {
 
@@ -148,6 +150,16 @@ public class ReservarActivity extends AppCompatActivity {
                 index = hourString.indexOf(":");
                 int hour=Integer.parseInt(hourString.substring(0,index));
                 int minutes=Integer.parseInt(hourString.substring(index+1,hourString.length()));
+
+                if(hour<9||hour>19){
+                    tiempoEt.setError("El horario es de 9:00 a 18:30");
+                    tiempoEt.requestFocus();
+                    return;
+                } else if(hour==18&&minutes>30){
+                    tiempoEt.setError("El horario es de 9:00 a 18:30");
+                    tiempoEt.requestFocus();
+                    return;
+                }
 
                 dateObject.setHours(hour);
                 dateObject.setMinutes(minutes);
