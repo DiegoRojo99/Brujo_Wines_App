@@ -48,11 +48,6 @@ public class UsuarioFragment extends Fragment {
         binding = FragmentUsuarioBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        Button loginButton=binding.btnUsuarioLogin;
-        loginButton.setOnClickListener(view -> {
-            getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
-        });
-
         Button signOutButton=binding.btnUsuarioSignOut;
         signOutButton.setOnClickListener(view -> {
             FirebaseAuth.getInstance().signOut();
@@ -60,7 +55,6 @@ public class UsuarioFragment extends Fragment {
         });
 
         usuario=FirebaseAuth.getInstance().getCurrentUser();
-
         reference= FirebaseDatabase.getInstance().getReference("Users");
         userId=usuario.getUid();
 
@@ -91,13 +85,6 @@ public class UsuarioFragment extends Fragment {
             }
         });
 
-        final TextView textView = binding.textUsuario;
-        usuarioViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
 
