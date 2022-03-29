@@ -66,8 +66,10 @@ public class ReservasFragment extends Fragment {
     public void actualizarReserva(int index, Reserva reserva){
         switch (index){
             case 0:
+
                 //reservaFecha1.setText(reserva.fechaReserva.toString());
-                reservaPersonas1.setText("10");
+                String numeroPersonas1=String.valueOf(reserva.numeroPersonas);
+                reservaPersonas1.setText(numeroPersonas1);
                 if(reserva.tipo){
                     reservaTipo1.setText("Cata de Vino");
                 }else{
@@ -76,7 +78,8 @@ public class ReservasFragment extends Fragment {
                 break;
             case 1:
                 //reservaFecha2.setText(reserva.fechaReserva.toString());
-                reservaPersonas2.setText("10");
+                String numeroPersonas2=String.valueOf(reserva.numeroPersonas);
+                reservaPersonas2.setText(numeroPersonas2);
                 if(reserva.tipo){
                     reservaTipo2.setText("Cata de Vino");
                 }else{
