@@ -10,28 +10,27 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class ReservarActivity extends AppCompatActivity {
-
-    TimePickerDialog timePickerDialog;
 
     EditText personasEt, fechaEt, tiempoEt;
     ToggleButton visitaCataButton;
@@ -39,10 +38,8 @@ public class ReservarActivity extends AppCompatActivity {
 
     private FirebaseUser usuario;
     private DatabaseReference reference;
-    private DatabaseReference reservasReference;
 
     private String userId;
-    private String reservaId;
 
     private int mYear, mMonth, mDay;
 
@@ -70,14 +67,7 @@ public class ReservarActivity extends AppCompatActivity {
         final TimePickerDialog timePickerDialog = new TimePickerDialog ( this, new TimePickerDialog.OnTimeSetListener () {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//am pm mode
-//                    String AM_PM;
-//                    if (hourOfDay>=0&&hourOfDay<12){
-//                        AM_PM=" AM";
-//                    }else {
-//                        AM_PM=" PM";
-//                    }
-                    tiempoEt.setText ( hourOfDay + ":" + minute);
+                tiempoEt.setText (hourOfDay + ":" + minute);
             }
         }, mHour, mMinute, true );
 
@@ -95,7 +85,7 @@ public class ReservarActivity extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog ( this, new DatePickerDialog.OnDateSetListener () {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                fechaEt.setText ( dayOfMonth + "/" + (month + 1) + "/" + year );
+                fechaEt.setText (new StringBuilder().append(dayOfMonth).append("/").append(month + 1).append("/").append(year).toString());
             }
         }, mYear, mMonth, mDay );
         datePickerDialog.show ();
@@ -105,8 +95,7 @@ public class ReservarActivity extends AppCompatActivity {
     private void realizarReserva(){
 
         personasEt=(EditText) findViewById(R.id.et_numero_personas_number);
-        int numeroPersonas=0;
-        numeroPersonas=Integer.parseInt(personasEt.getText().toString().trim());
+        int numeroPersonas=Integer.parseInt(personasEt.getText().toString().trim());
 
         if(numeroPersonas<0||numeroPersonas>10){
             personasEt.setError("El numero tiene que estar entre 1 y 10");
@@ -119,12 +108,9 @@ public class ReservarActivity extends AppCompatActivity {
         visitaCataButton=(ToggleButton) findViewById(R.id.toggleButtonCataVisita);
         Boolean cataReserva=visitaCataButton.isChecked();
 
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
-        // Make sure user insert date into edittext in this format.
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
         Date dateObject;
         Reserva res= new Reserva(null,numeroPersonas,cataReserva);
-
         try{
 
             String dob_var=(fechaEt.getText().toString().trim());
@@ -146,8 +132,7 @@ public class ReservarActivity extends AppCompatActivity {
 
             try {
 
-                int index=-1;
-                index = hourString.indexOf(":");
+                int index=hourString.indexOf(":");
                 int hour=Integer.parseInt(hourString.substring(0,index));
                 int minutes=Integer.parseInt(hourString.substring(index+1,hourString.length()));
 
@@ -175,10 +160,27 @@ public class ReservarActivity extends AppCompatActivity {
         }
 
         usuario= FirebaseAuth.getInstance().getCurrentUser();
-        reference= FirebaseDatabase.getInstance().getReference("Users");
         userId=usuario.getUid();
+        Map<String,Object> reserva=new HashMap<>();
+        reserva.put("Fecha Reserva",res.fechaReserva);
+        reserva.put("Tipo",res.tipo);
+        reserva.put("Numero Personas",res.numeroPersonas);
+        reserva.put("UserId",userId);
 
-        reference.child(userId).child("reservas").setValue(res);
+        FirebaseFirestore db= FirebaseFirestore.getInstance();
+        db.collection("reservas")
+                .add(reserva)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
 
         startActivity(new Intent(ReservarActivity.this,MainActivity.class));
 

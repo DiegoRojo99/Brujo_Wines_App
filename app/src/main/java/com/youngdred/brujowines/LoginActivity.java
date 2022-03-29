@@ -31,7 +31,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private ProgressBar progressBar;
 
-
     private FirebaseUser usuario;
 
     @Override
@@ -62,11 +61,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         try {
             usuario=FirebaseAuth.getInstance().getCurrentUser();
-            if(usuario.isEmailVerified()){
+            if (usuario != null && usuario.isEmailVerified()) {
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 
@@ -82,52 +81,54 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    public void loginUsuario(){
-        String email=etEmail.getText().toString().trim();
-        String password=etPassword.getText().toString().trim();
+        public void loginUsuario(){
+            String email=etEmail.getText().toString().trim();
+            String password=etPassword.getText().toString().trim();
 
 
-        if(email.isEmpty()){
-            etEmail.setError("Se requiere un email");
-            etEmail.requestFocus();
-            return;
-        }
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            etEmail.setError("El e-mail debe ser válido");
-            etEmail.requestFocus();
-            return;
-        }
-        if(password.isEmpty()){
-            etPassword.setError("Se requiere una contraseña");
-            etPassword.requestFocus();
-            return;
-        }
-        if(password.length()<6){
-            etPassword.setError("La contraseña debe ser de al menos 6 caracteres");
-            etPassword.requestFocus();
-            return;
-        }
-
-
-        progressBar.setVisibility(View.VISIBLE);
-        mAuth.signInWithEmailAndPassword(email,password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-                    if(user.isEmailVerified()){
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    }else{
-                        user.sendEmailVerification();
-                        Toast.makeText(LoginActivity.this, "Compruebe su correo para verificar su cuenta",Toast.LENGTH_LONG).show();
-                    }
-                }else{
-                    Toast.makeText(LoginActivity.this, "No se ha podido iniciar sesión. Comprueba tus datos",Toast.LENGTH_LONG).show();
-                    progressBar.setVisibility(View.GONE);
-                }
+            if(email.isEmpty()){
+                etEmail.setError("Se requiere un email");
+                etEmail.requestFocus();
+                return;
             }
-        });
+            if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                etEmail.setError("El e-mail debe ser válido");
+                etEmail.requestFocus();
+                return;
+            }
+            if(password.isEmpty()){
+                etPassword.setError("Se requiere una contraseña");
+                etPassword.requestFocus();
+                return;
+            }
+            if(password.length()<6){
+                etPassword.setError("La contraseña debe ser de al menos 6 caracteres");
+                etPassword.requestFocus();
+                return;
+            }
 
-    }
+
+            progressBar.setVisibility(View.VISIBLE);
+            mAuth.signInWithEmailAndPassword(email,password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+                        if (user != null) {
+                            if(user.isEmailVerified()){
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            }else{
+                                user.sendEmailVerification();
+                                Toast.makeText(LoginActivity.this, "Compruebe su correo para verificar su cuenta",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }else{
+                        Toast.makeText(LoginActivity.this, "No se ha podido iniciar sesión. Comprueba tus datos",Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                }
+            });
+
+        }
 }
