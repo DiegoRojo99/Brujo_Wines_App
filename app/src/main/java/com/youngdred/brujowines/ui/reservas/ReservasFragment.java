@@ -66,8 +66,7 @@ public class ReservasFragment extends Fragment {
     public void actualizarReserva(int index, Reserva reserva){
         switch (index){
             case 0:
-
-                //reservaFecha1.setText(reserva.fechaReserva.toString());
+                reservaFecha1.setText(reserva.fechaReserva.toString());
                 String numeroPersonas1=String.valueOf(reserva.numeroPersonas);
                 reservaPersonas1.setText(numeroPersonas1);
                 if(reserva.tipo){
@@ -77,7 +76,7 @@ public class ReservasFragment extends Fragment {
                 }
                 break;
             case 1:
-                //reservaFecha2.setText(reserva.fechaReserva.toString());
+                reservaFecha2.setText(reserva.fechaReserva.toString());
                 String numeroPersonas2=String.valueOf(reserva.numeroPersonas);
                 reservaPersonas2.setText(numeroPersonas2);
                 if(reserva.tipo){
@@ -104,7 +103,7 @@ public class ReservasFragment extends Fragment {
                                 if(firebaseUser.getUid().equals(document.get("UserId"))){
                                     boolean tipo=Boolean.parseBoolean(String.valueOf(document.get("Tipo")));
                                     int numeroPersonas=Integer.parseInt(String.valueOf(document.get("Numero Personas")));
-                                    Date fechaReserva=null;
+                                    Date fechaReserva=document.getDate("Fecha Reserva");
                                     Reserva res=new Reserva(fechaReserva,numeroPersonas,tipo);
                                     actualizarReserva(index, res);
                                     index++;

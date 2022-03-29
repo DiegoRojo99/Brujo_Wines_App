@@ -7,7 +7,7 @@
 
     <ImageView
         android:id="@+id/iv_visita_bodegas"
-        android:layout_width="166dp"
+        android:layout_width="150dp"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
