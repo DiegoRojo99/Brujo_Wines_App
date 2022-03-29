@@ -23,7 +23,10 @@ import com.youngdred.brujowines.Reserva;
 import com.youngdred.brujowines.ReservarActivity;
 import com.youngdred.brujowines.databinding.FragmentReservasBinding;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class ReservasFragment extends Fragment {
 
@@ -66,7 +69,10 @@ public class ReservasFragment extends Fragment {
     public void actualizarReserva(int index, Reserva reserva){
         switch (index){
             case 0:
-                reservaFecha1.setText(reserva.fechaReserva.toString());
+                //new Locale("ES") si el default no funciona
+                Format format=new SimpleDateFormat("E dd-LL-yyyy HH:mm zzz", Locale.getDefault());
+                String fechaString1=format.format(reserva.fechaReserva);
+                reservaFecha1.setText(fechaString1);
                 String numeroPersonas1=String.valueOf(reserva.numeroPersonas);
                 reservaPersonas1.setText(numeroPersonas1);
                 if(reserva.tipo){
