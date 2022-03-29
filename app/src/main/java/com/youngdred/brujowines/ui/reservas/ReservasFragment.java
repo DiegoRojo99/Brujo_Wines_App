@@ -82,7 +82,10 @@ public class ReservasFragment extends Fragment {
                 }
                 break;
             case 1:
-                reservaFecha2.setText(reserva.fechaReserva.toString());
+                //new Locale("ES") si el default no funciona
+                Format format2=new SimpleDateFormat("E dd-LL-yyyy HH:mm zzz", Locale.getDefault());
+                String fechaString2=format2.format(reserva.fechaReserva);
+                reservaFecha2.setText(fechaString2);
                 String numeroPersonas2=String.valueOf(reserva.numeroPersonas);
                 reservaPersonas2.setText(numeroPersonas2);
                 if(reserva.tipo){

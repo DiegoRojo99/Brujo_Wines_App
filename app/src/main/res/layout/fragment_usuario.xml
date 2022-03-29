@@ -78,47 +78,6 @@
                 android:layout_marginStart="30dp" />
 
 
-            <TextView
-                android:id="@+id/tv_usuario_reserva_texto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="Reserva:"
-                android:layout_marginTop="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_usuario_reserva_tipo_texto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tipo:"
-                android:textSize="20sp"
-                android:layout_marginStart="30dp" />
-
-            <TextView
-                android:id="@+id/tv_usuario_reserva_tipo_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_marginStart="75dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_usuario_reserva_fecha_texto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fecha:"
-                android:textSize="20sp"
-                android:layout_marginStart="20dp" />
-
-            <TextView
-                android:id="@+id/tv_usuario_reserva_fecha_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_marginStart="75dp"
-                android:textStyle="bold" />
-
             <Button
                 android:layout_gravity="center"
                 android:id="@+id/btn_usuario_sign_out"
