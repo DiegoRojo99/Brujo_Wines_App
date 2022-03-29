@@ -52,4 +52,10 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="cata_de_vinos">Cata de vinos</string>
     <string name="visita_a_la_bodega">Visita a la bodega</string>
+    <string name="brujo_wines_logo">Logo de Brujo Wines</string>
+    <string name="fecha_ejemplo">30 de Mayo, 19:00</string>
+    <string name="lugar">Lugar:</string>
+    <string name="tipo_de_reserva">Tipo de Reserva:</string>
+    <string name="numero_de_personas">Numero de Personas:</string>
+    <string name="zero">0</string>
 </resources>

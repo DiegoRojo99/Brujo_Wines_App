@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_visita_bodegas"
+        android:layout_width="166dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_reserva_carta_personas_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/wines2" />
+
+    <TextView
+        android:id="@+id/tv_reserva_carta_fecha_texto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/fecha"
+        android:layout_marginStart="8dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_visita_bodegas"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_reserva_carta_fecha_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/fecha_ejemplo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_reserva_carta_fecha_texto"
+        app:layout_constraintTop_toBottomOf="@id/tv_reserva_carta_fecha_texto" />
+
+
+    <TextView
+        android:id="@+id/tv_reserva_carta_tipo_texto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tipo_de_reserva"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tv_reserva_carta_fecha_texto"
+        app:layout_constraintTop_toBottomOf="@id/tv_reserva_carta_fecha_info"/>
+
+    <TextView
+        android:id="@+id/tv_reserva_carta_tipo_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cata_de_vinos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_reserva_carta_fecha_info"
+        app:layout_constraintTop_toBottomOf="@id/tv_reserva_carta_tipo_texto" />
+
+
+    <TextView
+        android:id="@+id/tv_reserva_carta_personas_texto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/numero_de_personas"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tv_reserva_carta_fecha_texto"
+        app:layout_constraintTop_toBottomOf="@id/tv_reserva_carta_tipo_info"/>
+
+    <TextView
+        android:id="@+id/tv_reserva_carta_personas_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/zero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_reserva_carta_fecha_info"
+        app:layout_constraintTop_toBottomOf="@id/tv_reserva_carta_personas_texto" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

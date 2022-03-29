@@ -5,33 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    tools:context=".ui.reservas.GaleriaFragment">
+    tools:context=".ui.reservas.ReservasFragment">
 
     <ImageView
         android:id="@+id/iv_reservas_logo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/titania_logo_text"
+        android:contentDescription="@string/brujo_wines_logo"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="0dp"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="64dp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_reservas_logo">
 
-        <include
-            android:id="@+id/include_visita_bodega"
-            layout="@layout/visita_bodega_carta"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
+
+            <include
+                android:id="@+id/include_reserva_1"
+                layout="@layout/reserva_carta"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include
+                android:id="@+id/include_reserva_2"
+                layout="@layout/reserva_carta"
+                android:layout_marginTop="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <Button
+                android:id="@+id/btn_reservas_reservar_ahora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/reserva_ahora" />
+        </LinearLayout>
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
