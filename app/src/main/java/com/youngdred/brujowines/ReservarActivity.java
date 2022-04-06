@@ -162,9 +162,9 @@ public class ReservarActivity extends AppCompatActivity {
         usuario= FirebaseAuth.getInstance().getCurrentUser();
         userId=usuario.getUid();
         Map<String,Object> reserva=new HashMap<>();
-        reserva.put("Fecha Reserva",res.fechaReserva);
+        reserva.put("FechaReserva",res.fechaReserva);
         reserva.put("Tipo",res.tipo);
-        reserva.put("Numero Personas",res.numeroPersonas);
+        reserva.put("NumeroPersonas",res.numeroPersonas);
         reserva.put("UserId",userId);
 
         FirebaseFirestore db= FirebaseFirestore.getInstance();

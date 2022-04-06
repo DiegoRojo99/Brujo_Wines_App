@@ -111,8 +111,8 @@ public class ReservasFragment extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 if(firebaseUser.getUid().equals(document.get("UserId"))){
                                     boolean tipo=Boolean.parseBoolean(String.valueOf(document.get("Tipo")));
-                                    int numeroPersonas=Integer.parseInt(String.valueOf(document.get("Numero Personas")));
-                                    Date fechaReserva=document.getDate("Fecha Reserva");
+                                    int numeroPersonas=Integer.parseInt(String.valueOf(document.get("NumeroPersonas")));
+                                    Date fechaReserva=document.getDate("FechaReserva");
                                     Reserva res=new Reserva(fechaReserva,numeroPersonas,tipo);
                                     actualizarReserva(index, res);
                                     index++;
