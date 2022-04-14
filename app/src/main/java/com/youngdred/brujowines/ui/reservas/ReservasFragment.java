@@ -82,6 +82,43 @@ public class ReservasFragment extends Fragment {
 
     public void cambiarVisita(){
 
+        FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db=FirebaseFirestore.getInstance();
+        db.collection("reservas")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            int total=0; boolean found=false;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                boolean tipo=Boolean.parseBoolean(String.valueOf(document.get("Tipo")));
+
+                                if(firebaseUser.getUid().equals(document.get("UserId")) && !tipo){
+                                    if(total == indexVisita&&!found){
+                                        int numeroPersonas=Integer.parseInt(String.valueOf(document.get("NumeroPersonas")));
+                                        Date fechaReserva=document.getDate("FechaReserva");
+                                        Reserva res=new Reserva(fechaReserva,numeroPersonas,tipo);
+                                        actualizarReserva(res, tipo);
+                                        indexVisita++;
+                                        total++;
+                                        found=true;
+                                    }else{
+                                        total++;
+                                    }
+                                }
+
+                            }
+
+                            if(total==indexVisita){
+                                indexVisita=0;
+                            }
+                        }
+                    }
+                });
+
+
     }
     public void cambiarCata(){
 
@@ -114,8 +151,6 @@ public class ReservasFragment extends Fragment {
 
                             }
 
-                            Log.d("TAG_DIEGO","total es "+total);
-                            Log.d("TAG_DIEGO","Index es "+indexCata);
                             if(total==indexCata){
                                 indexCata=0;
                             }
