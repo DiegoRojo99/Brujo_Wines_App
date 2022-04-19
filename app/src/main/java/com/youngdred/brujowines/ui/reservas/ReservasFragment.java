@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,10 +38,12 @@ public class ReservasFragment extends Fragment {
     private FragmentReservasBinding binding;
 
     private int indexCata=0, indexVisita=0;
+    private String cataActual="", visitaActual="";
 
     private TextView reservaFecha1, reservaPersonas1, tipo1;
     private TextView reservaFecha2, reservaPersonas2, tipo2;
-    private Button visitaBodegaButton, cambiarReservaCataBtn, cambiarReservaVisitaBtn;
+    private Button visitaBodegaButton, cambiarReservaCataBtn, cambiarReservaVisitaBtn,
+                    cancelarCataBtn, cancelarVisitaBtn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -47,15 +51,15 @@ public class ReservasFragment extends Fragment {
         binding = FragmentReservasBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        reservaFecha1 = (TextView) binding.includeReservaCata.tvReservaCartaFechaInfo;
-        reservaPersonas1 = (TextView) binding.includeReservaCata.tvReservaCartaPersonasInfo;
-        tipo1 = (TextView) binding.includeReservaCata.tvCartaReservaTipo;
-        cambiarReservaCataBtn = (Button) binding.includeReservaCata.verOtraReservaButton;
+        reservaFecha1 = binding.includeReservaCata.tvReservaCartaFechaInfo;
+        reservaPersonas1 = binding.includeReservaCata.tvReservaCartaPersonasInfo;
+        tipo1 = binding.includeReservaCata.tvCartaReservaTipo;
+        cambiarReservaCataBtn = binding.includeReservaCata.verOtraReservaButton;
 
-        reservaFecha2 = (TextView) binding.includeReservaVisita.tvReservaCartaFechaInfo;
-        reservaPersonas2 = (TextView) binding.includeReservaVisita.tvReservaCartaPersonasInfo;
-        tipo2 = (TextView) binding.includeReservaVisita.tvCartaReservaTipo;
-        cambiarReservaVisitaBtn = (Button) binding.includeReservaVisita.verOtraReservaButton;
+        reservaFecha2 = binding.includeReservaVisita.tvReservaCartaFechaInfo;
+        reservaPersonas2 = binding.includeReservaVisita.tvReservaCartaPersonasInfo;
+        tipo2 = binding.includeReservaVisita.tvCartaReservaTipo;
+        cambiarReservaVisitaBtn = binding.includeReservaVisita.verOtraReservaButton;
 
         tipo1.setText(R.string.carta_reserva_cata);
         tipo2.setText(R.string.carta_reserva_visita);
@@ -66,8 +70,12 @@ public class ReservasFragment extends Fragment {
 
 
         cambiarReservaVisitaBtn.setOnClickListener(view -> cambiarVisita());
-
         cambiarReservaCataBtn.setOnClickListener(view -> cambiarCata());
+
+        cancelarCataBtn=binding.includeReservaCata.cancelarReservaButton;
+        cancelarVisitaBtn=binding.includeReservaVisita.cancelarReservaButton;
+        cancelarCataBtn.setOnClickListener(view -> cancelarCata());
+        cancelarVisitaBtn.setOnClickListener(view -> cancelarVisita());
 
         cargarReservas();
 
@@ -78,6 +86,44 @@ public class ReservasFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void cancelarVisita(){
+        FirebaseFirestore db=FirebaseFirestore.getInstance();
+
+        db.collection("reservas").document(visitaActual)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("TAG_DELETE_VISITA", "DocumentSnapshot successfully deleted!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("TAG_DELETE_VISITA", "Error deleting document", e);
+                    }
+                });
+    }
+
+    private void cancelarCata(){
+        FirebaseFirestore db=FirebaseFirestore.getInstance();
+        db.collection("reservas").document(cataActual)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("TAG_DELETE_CATA", "DocumentSnapshot successfully deleted!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("TAG_DELETE_CATA", "Error deleting document", e);
+                    }
+                });
+
     }
 
     public void cambiarVisita(){
@@ -100,7 +146,7 @@ public class ReservasFragment extends Fragment {
                                         int numeroPersonas=Integer.parseInt(String.valueOf(document.get("NumeroPersonas")));
                                         Date fechaReserva=document.getDate("FechaReserva");
                                         Reserva res=new Reserva(fechaReserva,numeroPersonas,tipo);
-                                        actualizarReserva(res, tipo);
+                                        actualizarReserva(document.getId(), res, tipo);
                                         indexVisita++;
                                         total++;
                                         found=true;
@@ -140,7 +186,7 @@ public class ReservasFragment extends Fragment {
                                         int numeroPersonas=Integer.parseInt(String.valueOf(document.get("NumeroPersonas")));
                                         Date fechaReserva=document.getDate("FechaReserva");
                                         Reserva res=new Reserva(fechaReserva,numeroPersonas,tipo);
-                                        actualizarReserva(res, tipo);
+                                        actualizarReserva(document.getId(),res, tipo);
                                         indexCata++;
                                         total++;
                                         found=true;
@@ -160,7 +206,7 @@ public class ReservasFragment extends Fragment {
 
     }
 
-    public void actualizarReserva(Reserva reserva, boolean tipo){
+    public void actualizarReserva(String docID,Reserva reserva, boolean tipo){
         if (tipo) {
             //new Locale("ES") si el default no funciona
             Format format = new SimpleDateFormat("E dd-LL-yyyy HH:mm zzz", Locale.getDefault());
@@ -168,6 +214,7 @@ public class ReservasFragment extends Fragment {
             reservaFecha1.setText(fechaString1);
             String numeroPersonas1 = String.valueOf(reserva.numeroPersonas);
             reservaPersonas1.setText(numeroPersonas1);
+            cataActual=docID;
         } else {
             //new Locale("ES") si el default no funciona
             Format format2 = new SimpleDateFormat("E dd-LL-yyyy HH:mm zzz", Locale.getDefault());
@@ -175,6 +222,7 @@ public class ReservasFragment extends Fragment {
             reservaFecha2.setText(fechaString2);
             String numeroPersonas2 = String.valueOf(reserva.numeroPersonas);
             reservaPersonas2.setText(numeroPersonas2);
+            visitaActual=docID;
         }
     }
 
@@ -194,7 +242,7 @@ public class ReservasFragment extends Fragment {
                                     int numeroPersonas=Integer.parseInt(String.valueOf(document.get("NumeroPersonas")));
                                     Date fechaReserva=document.getDate("FechaReserva");
                                     Reserva res=new Reserva(fechaReserva,numeroPersonas,tipo);
-                                    actualizarReserva(res, tipo);
+                                    actualizarReserva(document.getId(),res, tipo);
                                 }
 
                             }
