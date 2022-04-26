@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetallesReservaActivity">
+
+    <ImageView
+        android:id="@+id/iv_detalles_brujo_wines_logo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/brujo_wines_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tv_detalles_tipo_reserva_texto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/tipo_de_reserva"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_detalles_brujo_wines_logo" />
+
+    <TextView
+        android:id="@+id/tv_detalles_tipo_reserva_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/cata_de_vinos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_detalles_tipo_reserva_texto"
+        app:layout_constraintTop_toBottomOf="@id/tv_detalles_tipo_reserva_texto" />
+
+    <TextView
+        android:id="@+id/tv_detalles_fecha_reserva_texto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/fecha"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detalles_tipo_reserva_info" />
+
+    <TextView
+        android:id="@+id/tv_detalles_fecha_reserva_tipo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/fecha_ejemplo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_detalles_fecha_reserva_texto"
+        app:layout_constraintTop_toBottomOf="@id/tv_detalles_fecha_reserva_texto" />
+
+    <TextView
+        android:id="@+id/tv_detalles_personas_texto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/numero_de_personas"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tv_detalles_fecha_reserva_texto"
+        app:layout_constraintTop_toBottomOf="@id/tv_detalles_fecha_reserva_tipo"/>
+
+    <TextView
+        android:id="@+id/tv_detalles_personas_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/zero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_detalles_fecha_reserva_tipo"
+        app:layout_constraintTop_toBottomOf="@id/tv_detalles_personas_texto" />
+
+    <Button
+        android:id="@+id/detalles_ver_otra_reserva_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ver_otra_reserva"
+        app:layout_constraintEnd_toEndOf="@+id/tv_detalles_personas_info"
+        app:layout_constraintStart_toStartOf="@+id/tv_detalles_personas_info"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detalles_personas_info" />
+
+    <Button
+        android:id="@+id/detalles_detalles_reserva_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editar_reserva"
+        app:layout_constraintEnd_toEndOf="@+id/detalles_ver_otra_reserva_button"
+        app:layout_constraintStart_toStartOf="@+id/detalles_ver_otra_reserva_button"
+        app:layout_constraintTop_toBottomOf="@+id/detalles_ver_otra_reserva_button" />
+
+    <Button
+        android:id="@+id/detalles_cancelar_reserva_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:text="@string/Cancelar"
+        app:layout_constraintEnd_toEndOf="@+id/detalles_detalles_reserva_button"
+        app:layout_constraintStart_toStartOf="@+id/detalles_detalles_reserva_button"
+        app:layout_constraintTop_toBottomOf="@+id/detalles_detalles_reserva_button" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
