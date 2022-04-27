@@ -22,9 +22,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.youngdred.brujowines.DetallesReservaActivity;
 import com.youngdred.brujowines.R;
 import com.youngdred.brujowines.Reserva;
 import com.youngdred.brujowines.ReservarActivity;
+import com.youngdred.brujowines.TitaniaBlancoActivity;
 import com.youngdred.brujowines.databinding.FragmentReservasBinding;
 
 import java.text.Format;
@@ -42,7 +44,7 @@ public class ReservasFragment extends Fragment {
 
     private TextView reservaFecha1, reservaPersonas1, tipo1;
     private TextView reservaFecha2, reservaPersonas2, tipo2;
-    private Button visitaBodegaButton, cambiarReservaCataBtn, cambiarReservaVisitaBtn,
+    public Button visitaBodegaButton, cambiarReservaCataBtn, cambiarReservaVisitaBtn,
                     cancelarCataBtn, cancelarVisitaBtn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -74,8 +76,8 @@ public class ReservasFragment extends Fragment {
 
         cancelarCataBtn=binding.includeReservaCata.cancelarReservaButton;
         cancelarVisitaBtn=binding.includeReservaVisita.cancelarReservaButton;
-        cancelarCataBtn.setOnClickListener(view -> cancelarCata());
-        cancelarVisitaBtn.setOnClickListener(view -> cancelarVisita());
+        cancelarCataBtn.setOnClickListener(view -> detallesReserva(true));
+        cancelarVisitaBtn.setOnClickListener(view -> detallesReserva(false));
 
         cargarReservas();
 
@@ -88,42 +90,17 @@ public class ReservasFragment extends Fragment {
         binding = null;
     }
 
-    private void cancelarVisita(){
-        FirebaseFirestore db=FirebaseFirestore.getInstance();
+    public void detallesReserva(boolean tipo){
 
-        db.collection("reservas").document(visitaActual)
-                .delete()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("TAG_DELETE_VISITA", "DocumentSnapshot successfully deleted!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("TAG_DELETE_VISITA", "Error deleting document", e);
-                    }
-                });
-    }
-
-    private void cancelarCata(){
-        FirebaseFirestore db=FirebaseFirestore.getInstance();
-        db.collection("reservas").document(cataActual)
-                .delete()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("TAG_DELETE_CATA", "DocumentSnapshot successfully deleted!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("TAG_DELETE_CATA", "Error deleting document", e);
-                    }
-                });
-
+        Intent detallesIntent = new Intent(getActivity(), DetallesReservaActivity.class);
+        String reservaActual;
+        if(tipo){
+            reservaActual=cataActual;
+        }else{
+            reservaActual=visitaActual;
+        }
+        detallesIntent.putExtra("ReservaID",reservaActual);
+        getActivity().startActivity(detallesIntent);
     }
 
     public void cambiarVisita(){
