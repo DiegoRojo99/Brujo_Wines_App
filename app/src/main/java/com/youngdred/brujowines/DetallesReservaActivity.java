@@ -28,7 +28,7 @@ import java.util.Locale;
 public class DetallesReservaActivity extends AppCompatActivity {
 
 
-    private int indexCata=0, indexVisita=0;
+    private int indexReserva=0, numeroReservas=0;
     private String reservaID="", TAG="TAG_DIEGO";
 
     public TextView tipoReservaTV, fechaReservaTV, numeroPersonasTV;
@@ -48,6 +48,8 @@ public class DetallesReservaActivity extends AppCompatActivity {
 
         cancelarBtn=findViewById(R.id.detalles_cancelar_reserva_button);
         cancelarBtn.setOnClickListener(view -> cancelarReserva());
+        verOtraReservaBtn=findViewById(R.id.detalles_ver_otra_reserva_button);
+        verOtraReservaBtn.setOnClickListener(view -> cargarReservas());
 
         getDetallesReserva();
     }
@@ -71,6 +73,10 @@ public class DetallesReservaActivity extends AppCompatActivity {
                         Log.w("TAG_DELETE_VISITA", "Error deleting document", e);
                     }
                 });
+
+        numeroReservas--;
+        comprobarIndiceReserva();
+        cargarReservas();
     }
 
 
@@ -116,6 +122,14 @@ public class DetallesReservaActivity extends AppCompatActivity {
 
     }
 
+    public void comprobarIndiceReserva(){
+        if(indexReserva==numeroReservas-1){
+            indexReserva=0;
+        }else{
+            indexReserva++;
+        }
+    }
+
     public void cargarReservas(){
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore db=FirebaseFirestore.getInstance();
@@ -126,16 +140,24 @@ public class DetallesReservaActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            int actual=0;
                             for (QueryDocumentSnapshot document : task.getResult()) {
+                                assert firebaseUser != null;
                                 if(firebaseUser.getUid().equals(document.get("UserId"))){
-                                    boolean tipo=Boolean.parseBoolean(String.valueOf(document.get("Tipo")));
-                                    int numeroPersonas=Integer.parseInt(String.valueOf(document.get("NumeroPersonas")));
-                                    Date fechaReserva=document.getDate("FechaReserva");
-                                    Reserva res=new Reserva(fechaReserva,numeroPersonas,tipo);
-                                    actualizarReserva(document.getId(),res, tipo);
+                                    if(actual==indexReserva){
+                                        boolean tipo=Boolean.parseBoolean(String.valueOf(document.get("Tipo")));
+                                        int numeroPersonas=Integer.parseInt(String.valueOf(document.get("NumeroPersonas")));
+                                        Date fechaReserva=document.getDate("FechaReserva");
+                                        Reserva res=new Reserva(fechaReserva,numeroPersonas,tipo);
+                                        actualizarReserva(document.getId(),res, tipo);
+                                    }
+                                    actual++;
                                 }
 
                             }
+
+                            numeroReservas=actual;
+                            comprobarIndiceReserva();
                         }
                     }
                 });
