@@ -7,6 +7,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -15,11 +16,15 @@ import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -35,6 +40,7 @@ public class EditarActivity extends AppCompatActivity {
     TextView tipoReservaActual, fechaReservaActual, numeroPersonasActual;
 
     String reservaID;
+    Reserva resActual;
 
     private int mYear, mMonth, mDay;
     private int mHour, mMinute;
@@ -84,7 +90,8 @@ public class EditarActivity extends AppCompatActivity {
                                     int numeroPersonas=Integer.parseInt(String.valueOf(document.get("NumeroPersonas")));
                                     Date fechaReserva=document.getDate("FechaReserva");
                                     Reserva res=new Reserva(fechaReserva,numeroPersonas,tipo);
-                                    actualizarReserva(document.getId(),res, tipo);
+                                    resActual=res;
+                                    actualizarReservaActual(document.getId(),res, tipo);
 
                                 }
 
@@ -93,7 +100,7 @@ public class EditarActivity extends AppCompatActivity {
                     }
                 });
     }
-    public void actualizarReserva(String docID,Reserva reserva, boolean tipo){
+    public void actualizarReservaActual(String docID,Reserva reserva, boolean tipo){
         if (tipo) {
             tipoReservaActual.setText(R.string.cata_de_vinos);
         } else {
@@ -108,10 +115,94 @@ public class EditarActivity extends AppCompatActivity {
 
     }
 
-    public void editarReserva(){
+    public void getNuevosDatos(){
+
+        // Numero Personas
+        int numeroPersonas=Integer.parseInt(personasEt.getText().toString().trim());
+        if(numeroPersonas<0||numeroPersonas>10){
+            personasEt.setError("El numero tiene que estar entre 1 y 10");
+            personasEt.requestFocus();
+            numeroPersonas=0;
+            return;
+        }
+        resActual.numeroPersonas=numeroPersonas;
+
+        //Tipo
+        Boolean cataReserva=tipoReservaBtn.isChecked();
+        resActual.tipo=cataReserva;
+
+        //Fecha Reserva
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
+        Date dateObject;
+        Reserva res= new Reserva(null,numeroPersonas,cataReserva);
+        try{
+
+            String dob_var=(fechaEt.getText().toString().trim());
+            String hourString=(tiempoEt.getText().toString().trim());
+
+            dateObject = formatter.parse(dob_var);
+
+            if(dob_var.isEmpty()){
+                fechaEt.setError("Introduce una fecha");
+                fechaEt.requestFocus();
+                return;
+            }
+            if(hourString.isEmpty()){
+                tiempoEt.setError("Introduce una hora");
+                tiempoEt.requestFocus();
+                return;
+            }
+
+
+            try {
+                int index=hourString.indexOf(":");
+                int hour=Integer.parseInt(hourString.substring(0,index));
+                int minutes=Integer.parseInt(hourString.substring(index+1,hourString.length()));
+
+                if(hour<9||hour>19){
+                    tiempoEt.setError("El horario es de 9:00 a 18:30");
+                    tiempoEt.requestFocus();
+                    return;
+                } else if(hour==18&&minutes>30){
+                    tiempoEt.setError("El horario es de 9:00 a 18:30");
+                    tiempoEt.requestFocus();
+                    return;
+                }
+
+                dateObject.setHours(hour);
+                dateObject.setMinutes(minutes);
+
+            }catch (Exception e){
+
+            }
+
+            resActual.fechaReserva=dateObject;
+
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
 
     }
+    public void editarReserva(){
 
+        getNuevosDatos();
+
+        FirebaseFirestore db=FirebaseFirestore.getInstance();
+        DocumentReference reservaRef = db.collection("reservas").document(reservaID);
+        reservaRef
+                .update(
+                        "FechaReserva", resActual.fechaReserva,
+                        "NumeroPersonas", resActual.numeroPersonas,
+                        "Tipo", resActual.tipo
+                );
+
+        goHome();
+    }
+
+    public void goHome(){
+        Intent homeIntent= new Intent(EditarActivity.this, MainActivity.class);
+        startActivity(homeIntent);
+    }
     public void sacarReloj(){
         final Calendar calendar = Calendar.getInstance ();
 
