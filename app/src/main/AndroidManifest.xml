@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BrujoWines">
         <activity
+            android:name=".EditarActivity"
+            android:exported="true" />
+        <activity
             android:name=".DetallesReservaActivity"
             android:exported="true" />
         <activity

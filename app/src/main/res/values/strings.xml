@@ -60,10 +60,19 @@
     <string name="fecha_ejemplo">30 de Mayo, 19:00</string>
     <string name="lugar">Lugar:</string>
     <string name="tipo_de_reserva">Tipo de Reserva:</string>
+    <string name="nuevo_tipo_de_reserva">Nuevo Tipo de Reserva:</string>
     <string name="numero_de_personas">Numero de Personas:</string>
     <string name="zero">0</string>
     <string name="ver_otra_reserva">Ver Otra Reserva</string>
     <string name="Cancelar">Cancelar</string>
     <string name="foto_de_vi_as">Foto de Viñas</string>
     <string name="editar_reserva">Editar Reserva</string>
+    <string name="datos_reserva">Datos Reserva:</string>
+    <string name="hh_mm">HH:MM</string>
+    <string name="dd_mm_yyyy">DD/MM/YYYY</string>
+    <string name="nueva_fecha_de_reserva">Nueva Fecha de Reserva:</string>
+    <string name="nuevo_numero_de_personas">Nuevo Numero de Personas:</string>
+    <string name="numero_de_personas_actual">Numero de Personas Actual:</string>
+    <string name="fecha_de_reserva_actual">Fecha de Reserva Actual:</string>
+    <string name="one">1</string>
 </resources>

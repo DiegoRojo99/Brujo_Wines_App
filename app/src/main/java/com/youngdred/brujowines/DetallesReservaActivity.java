@@ -50,11 +50,18 @@ public class DetallesReservaActivity extends AppCompatActivity {
         cancelarBtn.setOnClickListener(view -> cancelarReserva());
         verOtraReservaBtn=findViewById(R.id.detalles_ver_otra_reserva_button);
         verOtraReservaBtn.setOnClickListener(view -> cargarReservas());
+        editarReservaBtn=findViewById(R.id.detalles_detalles_reserva_button);
+        editarReservaBtn.setOnClickListener(view -> editarReserva());
 
         getDetallesReserva();
     }
 
 
+    private void editarReserva(){
+       Intent editarReservaIntent = new Intent(DetallesReservaActivity.this, EditarActivity.class);
+       editarReservaIntent.putExtra("ReservaID", reservaID);
+       startActivity(editarReservaIntent);
+    }
 
     private void cancelarReserva(){
         FirebaseFirestore db=FirebaseFirestore.getInstance();
