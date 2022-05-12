@@ -9,10 +9,11 @@
 
     <ImageView
         android:id="@+id/iv_reservas_logo"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:contentDescription="@string/brujo_wines_logo"
-        android:src="@drawable/logo"
+        android:src="@drawable/logo_with_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp">
 
             <include

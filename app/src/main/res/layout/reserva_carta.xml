@@ -6,16 +6,16 @@
 
     <ImageView
         android:id="@+id/iv_visita_bodegas"
-        android:layout_width="200dp"
+        android:layout_width="160dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/foto_de_vi_as"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/cancelar_reserva_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_carta_reserva_tipo"
-        app:srcCompat="@drawable/wines2" />
+        app:srcCompat="@drawable/uvas2" />
 
     <TextView
         android:id="@+id/tv_reserva_carta_fecha_texto"

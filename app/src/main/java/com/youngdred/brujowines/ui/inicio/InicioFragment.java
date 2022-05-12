@@ -48,13 +48,6 @@ public class InicioFragment extends Fragment {
                 cambiarActividadTitania("tinto")
         );
 
-        final TextView textView = binding.textInicio;
-        inicioViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
 
