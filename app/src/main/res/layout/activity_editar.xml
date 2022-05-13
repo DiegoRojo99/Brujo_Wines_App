@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="@string/fecha_ejemplo" />
+            android:text="@string/barra" />
         <TextView
             android:id="@+id/tv_editar_tipo_reserva_nueva_texto"
             android:layout_width="match_parent"
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="@string/one" />
+            android:text="@string/barra" />
         <TextView
             android:id="@+id/tv_editar_numero_personas_nueva_texto"
             android:layout_width="match_parent"
@@ -92,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="@string/fecha_ejemplo" />
+            android:text="@string/barra" />
         <TextView
             android:id="@+id/tv_editar_fecha_reserva_nueva_texto"
             android:layout_width="match_parent"

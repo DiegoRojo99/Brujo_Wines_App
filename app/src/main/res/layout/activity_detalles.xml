@@ -34,7 +34,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="@string/cata_de_vinos"
+        android:text="@string/barra"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_detalles_tipo_reserva_texto"
         app:layout_constraintTop_toBottomOf="@id/tv_detalles_tipo_reserva_texto" />
@@ -57,7 +57,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="@string/fecha_ejemplo"
+        android:text="@string/barra"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_detalles_fecha_reserva_texto"
         app:layout_constraintTop_toBottomOf="@id/tv_detalles_fecha_reserva_texto" />
@@ -76,7 +76,7 @@
         android:id="@+id/tv_detalles_personas_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/zero"
+        android:text="@string/barra"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_detalles_fecha_reserva_info"
         app:layout_constraintTop_toBottomOf="@id/tv_detalles_personas_texto" />

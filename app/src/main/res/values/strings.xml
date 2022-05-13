@@ -75,4 +75,5 @@
     <string name="numero_de_personas_actual">Numero de Personas Actual:</string>
     <string name="fecha_de_reserva_actual">Fecha de Reserva Actual:</string>
     <string name="one">1</string>
+    <string name="barra">-</string>
 </resources>
