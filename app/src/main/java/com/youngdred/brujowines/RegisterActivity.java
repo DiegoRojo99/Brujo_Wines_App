@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
@@ -25,7 +27,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private ImageView banner;
     private Button registrarUsuario;
     private EditText etNombre, etEmail, etPassword;
-    private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
 
@@ -36,17 +37,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         mAuth = FirebaseAuth.getInstance();
 
-        banner = (ImageView) findViewById(R.id.iv_register_app_name);
+        banner = findViewById(R.id.iv_register_app_name);
         banner.setOnClickListener(this);
 
-        registrarUsuario=(Button)findViewById(R.id.btn_registrar_brujo_wines_registrar);
+        registrarUsuario= findViewById(R.id.btn_registrar_brujo_wines_registrar);
         registrarUsuario.setOnClickListener(this);
 
-        etNombre=(EditText) findViewById(R.id.et_register_nombre);
-        etEmail=(EditText) findViewById(R.id.et_register_email);
-        etPassword=(EditText) findViewById(R.id.et_register_password);
-
-        progressBar=(ProgressBar) findViewById(R.id.progressBarRegistrar);
+        etNombre= findViewById(R.id.et_register_nombre);
+        etEmail= findViewById(R.id.et_register_email);
+        etPassword= findViewById(R.id.et_register_password);
     }
 
     @Override
@@ -90,34 +89,33 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
+
+
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Usuario usuario= new Usuario(nombre, email, password);
+                            FirebaseUser u=FirebaseAuth.getInstance().getCurrentUser();
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(nombre)
+                                    .build();
 
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .setValue(usuario).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            u.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(RegisterActivity.this, "Usuario registrado correctamente", Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.VISIBLE);
 
                                         //Dirigir a login
                                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                     }else{
                                         Toast.makeText(RegisterActivity.this, "No se ha podido registrar al usuario", Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.VISIBLE);
                                     }
                                 }
                             });
                         }else{
                             Toast.makeText(RegisterActivity.this, "No se ha podido registrar al usuario",Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 });

@@ -2,6 +2,7 @@ package com.youngdred.brujowines.ui.usuario;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +16,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.youngdred.brujowines.LoginActivity;
-import com.youngdred.brujowines.Usuario;
 import com.youngdred.brujowines.databinding.FragmentUsuarioBinding;
 
 public class UsuarioFragment extends Fragment {
@@ -33,6 +30,8 @@ public class UsuarioFragment extends Fragment {
     private DatabaseReference reference;
     private String userId;
     private Button signOutButton;
+
+    private TextView saludoTV, nombreTV, emailTV;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,34 +51,40 @@ public class UsuarioFragment extends Fragment {
         reference= FirebaseDatabase.getInstance().getReference("Users");
         userId=usuario.getUid();
 
-        final TextView saludoTV=(TextView) binding.tvUsuarioSaludo;
-        final TextView emailTV=(TextView) binding.tvUsuarioEmailUsuario;
-        final TextView nombreTV=(TextView) binding.tvUsuarioNombreUsuario;
+        saludoTV= binding.tvUsuarioSaludo;
+        emailTV= binding.tvUsuarioEmailUsuario;
+        nombreTV= binding.tvUsuarioNombreUsuario;
 
-        reference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Usuario perfilUsuario=snapshot.getValue(Usuario.class);
-
-                if(perfilUsuario!=null){
-                    String nombre=perfilUsuario.nombre;
-                    String email=perfilUsuario.email;
-
-                    saludoTV.setText("¡Bienvenido, "+nombre+"!");
-                    nombreTV.setText(nombre);
-                    emailTV.setText(email);
-                }else{
-                    saludoTV.setText("Esto no funciona");
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getActivity(),"Algo ha salido mal",Toast.LENGTH_LONG).show();
-            }
-        });
+        getUserData();
 
         return root;
+    }
+
+    public void updateTVs(String name, String email){
+        saludoTV.setText("¡Bienvenido, "+name+"!");
+        nombreTV.setText(name);
+        emailTV.setText(email);
+
+
+    }
+
+    public void getUserData(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+
+            // Check if user's email is verified
+            boolean emailVerified = user.isEmailVerified();
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getIdToken() instead.
+            String uid = user.getUid();
+
+            updateTVs(name, email);
+        }
     }
 
     @Override

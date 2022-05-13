@@ -6,4 +6,6 @@ import androidx.lifecycle.ViewModel;
 
 public class UsuarioViewModel extends ViewModel {
 
+    public UsuarioViewModel() {
+    }
 }
