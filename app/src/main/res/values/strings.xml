@@ -28,6 +28,9 @@
     <string name="cover_image">Imagen de viñas</string>
     <string name="icono_vino">Icono de Vino</string>
     <string name="titania_blanco">Titania Blanco</string>
+    <string name="titania_blanco_desc_2">La característica principal de esta peculiar variedad es que conseguimos
+                        vinos originales y diferentes a la gran mayoría de vinos blancos en Rioja
+                        mayormente elaborados con la variedad Viura.</string>
     <string name="titania_blanco_desc_1">Este vino tinto 100% tempranillo ha sido elaborado en nuestras instalaciones de San Vicente de la Sonsierra en Rioja Alta</string>
     <string name="titania_tinto">Titania Tinto</string>
     <string name="titania_rosado">Titania Rosado</string>
