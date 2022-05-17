@@ -29,7 +29,7 @@
     <string name="icono_vino">Icono de Vino</string>
     <string name="titania_blanco">Titania Blanco</string>
 
-    <string name="titania_blanco_desc_1">Este vino tinto 100% tempranillo ha sido elaborado en nuestras
+    <string name="titania_blanco_desc_1">Este vino blanco 100% tempranillo ha sido elaborado en nuestras
         instalaciones de San Vicente de la Sonsierra en Rioja Alta</string>
 
     <string name="titania_blanco_desc_2">La característica principal de esta peculiar variedad es que conseguimos
@@ -58,16 +58,27 @@ En boca son persistentes y muy equilibrados entre acidez y grado alcohólico, co
         en barricas nuevas mixtas, con duelas al 50% roble frances y
         50% roble americano, de tostado medio bajo para respetar la tipicidad de la variedad.</string>
 
-    <string name="titania_blanco_desc_8">Un afinado en botella de 6 meses antes de salir al mercado,
-        confiere a nuestro Titania una elegancia, frescura, y equilibrio con los aromas tostados de
-        roble que hacen que la nariz y la boca de este fino sean sedosos,
-        agradables, y sobre todo nos invite a beber por su facilidad de consumo.</string>
+    <string name="titania_blanco_desc_8">Un afinado en botella de 6 meses antes de salir al mercado, confiere a nuestro Titania una elegancia, frescura, y equilibrio con los aromas tostados de
+        roble que hacen que la nariz y la boca de este fino sean sedosos, agradables, y sobre todo nos invite a beber por su facilidad de consumo.</string>
 
     <string name="titania_blanco_desc_9">
         Es aconsejable disfrutarlo a una temperatura de 4º-6ºc.
     </string>
 
     <string name="titania_tinto">Titania Tinto</string>
+
+    <string name="titania_tinto_desc_1">Este vino tinto 100% tempranillo ha sido elaborado en nuestras instalaciones de San Vicente de la Sonsierra en Rioja Alta</string>
+    <string name="titania_tinto_desc_2">El Tempranillo en la zona de la Sonsierra Riojana es la variedad más característica y que mejor se adapta debido a las peculiares características tanto de suelo como de clima en tan privilegiada zona, así como a la confluencia de climas tanto atlánticos como mediterráneos, provocados por la existencia al norte de la Sierra Cantabria y al sur del Rio Ebro. La zona posee una combinación de suelos pobres arcilloso calcáreos y de cascajo, perfectos para el cultivo de Tempranillo, obteniendo producciones muy bajas y de máxima calidad.</string>
+    <string name="titania_tinto_desc_4">Titania tinto es un vino obtenido de viñedos de más de 50 años, y las cepas ya son “maduras” es decir saben auto-regularse, para defenderse del estrés hídrico y de la escasez de nutrientes, produciendo racimos pequeños, con elevada cantidad de azúcar y concentración fenólica.</string>
+    <string name="titania_tinto_desc_5">A pesar de ser un vino con casi 14% alcohol, es un vino sedoso, con una estructura en boca potente y con tanino amable que nos deja un impresionante sabor a fruta equilibrada con los toques de coco y café procedente del roble americano, y toques de vainilla y frutos secos y balsámicos procedentes del roble francés.</string>
+    <string name="titania_tinto_desc_6">Elaborado en tanques de acero inoxidable con una fermentación controlada durante 15 días, además de otros 10 días de maceración, más tarde permanece durante 2 meses en contacto directo con hormigón para hacer la fermentación maloláctica, y conseguir una mejor estabilidad de su estructura y una mayor concentración de color y aromas.</string>
+    <string name="titania_tinto_desc_7">Concluido este proceso permanece durante 10 meses en barricas nuevas mixtas, esto quiere decir que son barricas a estrenar, y que cada una tiene madera roble americano y roble francés al 50%, de esta manera el vino descansa durante este tiempo adquiriendo las ventajas de cada tipo de madera, evitando tener que hacer mezclas que degradarían al vino una vez terminado el proceso de crianza.</string>
+    <string name="titania_tinto_desc_8">Después del tiempo de barrica, ha permanecido al menos 6 meses en nuestras instalaciones finalizando el proceso de fusión aromática y afinado en boca. No es un crianza, no es un reserva, ni es un gran reserva, simplemente es un vino elaborado a nuestro gusto, nuestro gusto de autor, de elaborador, para disfrutar en su plenitud sin pensar en objetivos comerciales ni establecidos por el mercado, simplemente es el vino que nos gusta a nosotros.</string>
+    <string name="titania_tinto_desc_9">Recomendamos disfrutarlo a una temperatura de 12-14 grados con carnes rojas, caza o guisos que nos ayuden a potenciar las agradables sensaciones que nos transmite Titania. Titania nos permite disfrutar de la tipicidad, excelencia y sobre todo exclusividad de la Sonsierra en una simple copa de vino.</string>
+
+
+
+
     <string name="titania_rosado">Titania Rosado</string>
     <string name="titania_logo_text">Logo de Titania</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -122,4 +133,5 @@ En boca son persistentes y muy equilibrados entre acidez y grado alcohólico, co
     <string name="icono_fermentacion">Icono de fermentación</string>
     <string name="icono_botella">Icono de Botella</string>
     <string name="icono_termometro">Icono de Termometro</string>
+    <string name="icono_estrella">Icono Estrella</string>
 </resources>

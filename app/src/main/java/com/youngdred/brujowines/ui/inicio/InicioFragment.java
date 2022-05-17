@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.youngdred.brujowines.MainActivity;
 import com.youngdred.brujowines.TitaniaBlancoActivity;
+import com.youngdred.brujowines.TitaniaTintoActivity;
 import com.youngdred.brujowines.databinding.FragmentInicioBinding;
 
 public class InicioFragment extends Fragment {
@@ -62,6 +63,7 @@ public class InicioFragment extends Fragment {
     public void cambiarActividadTitania(String vino){
         switch (vino){
             case "tinto":
+                getActivity().startActivity(new Intent(getActivity(), TitaniaTintoActivity.class));
                 break;
             case "blanco":
                 getActivity().startActivity(new Intent(getActivity(), TitaniaBlancoActivity.class));
