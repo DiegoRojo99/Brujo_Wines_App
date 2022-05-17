@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="whitesmoke">#F5F5F5F5</color>
     <color name="red">#F02314</color>
+    <color name="titania_blanco">#86e0c2</color>
+    <color name="titania_tinto">#001f55</color>
+    <color name="titania_rosado">#fc504e</color>
 </resources>

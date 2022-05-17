@@ -28,10 +28,45 @@
     <string name="cover_image">Imagen de viñas</string>
     <string name="icono_vino">Icono de Vino</string>
     <string name="titania_blanco">Titania Blanco</string>
+
+    <string name="titania_blanco_desc_1">Este vino tinto 100% tempranillo ha sido elaborado en nuestras
+        instalaciones de San Vicente de la Sonsierra en Rioja Alta</string>
+
     <string name="titania_blanco_desc_2">La característica principal de esta peculiar variedad es que conseguimos
                         vinos originales y diferentes a la gran mayoría de vinos blancos en Rioja
                         mayormente elaborados con la variedad Viura.</string>
-    <string name="titania_blanco_desc_1">Este vino tinto 100% tempranillo ha sido elaborado en nuestras instalaciones de San Vicente de la Sonsierra en Rioja Alta</string>
+
+    <string name="titania_blanco_desc_3">También son vinos con elevado grado alcohólico, 13,5% en caso de Titania,
+        aromas a frutas con hueso, por ejemplo el melocotón y florales.</string>
+
+    <string name="titania_blanco_desc_4">
+En boca son persistentes y muy equilibrados entre acidez y grado alcohólico, consiguiendo que en boca sea sedoso y amable.
+    </string>
+
+    <string name="titania_blanco_desc_5">Debido a que es una variedad de maduración temprana, hemos encontrado una
+        localizacion para plantar nuestras cepas de tempranillo blanco a una altura de 650 metros, cuando la media en
+        Rioja ronda los 500 metros, en un suelo arcilloso que nos permiten retrasar una completa maduración de todos los parámetros de la uva.
+    </string>
+
+    <string name="titania_blanco_desc_6">
+        Nuestro Titania ha fermentado en acero inoxidable a una temperatura
+        de 12-14 grados durante 28 días, manteniendo sus lias para
+        conseguir una mayor estructura y complejidad
+    </string>
+
+    <string name="titania_blanco_desc_7">Después de este proceso, ha estado durante casi 3 meses
+        en barricas nuevas mixtas, con duelas al 50% roble frances y
+        50% roble americano, de tostado medio bajo para respetar la tipicidad de la variedad.</string>
+
+    <string name="titania_blanco_desc_8">Un afinado en botella de 6 meses antes de salir al mercado,
+        confiere a nuestro Titania una elegancia, frescura, y equilibrio con los aromas tostados de
+        roble que hacen que la nariz y la boca de este fino sean sedosos,
+        agradables, y sobre todo nos invite a beber por su facilidad de consumo.</string>
+
+    <string name="titania_blanco_desc_9">
+        Es aconsejable disfrutarlo a una temperatura de 4º-6ºc.
+    </string>
+
     <string name="titania_tinto">Titania Tinto</string>
     <string name="titania_rosado">Titania Rosado</string>
     <string name="titania_logo_text">Logo de Titania</string>
@@ -79,4 +114,12 @@
     <string name="fecha_de_reserva_actual">Fecha de Reserva Actual:</string>
     <string name="one">1</string>
     <string name="barra">-</string>
+    <string name="barrica">Barrica</string>
+    <string name="uvas">uvas</string>
+    <string name="icono_de_frutas">Icono de Frutas</string>
+    <string name="icono_labios">Icono de labios</string>
+    <string name="icono_terreno">icono de terreno</string>
+    <string name="icono_fermentacion">Icono de fermentación</string>
+    <string name="icono_botella">Icono de Botella</string>
+    <string name="icono_termometro">Icono de Termometro</string>
 </resources>
