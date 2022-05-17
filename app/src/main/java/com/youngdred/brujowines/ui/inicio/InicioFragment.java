@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.youngdred.brujowines.MainActivity;
 import com.youngdred.brujowines.TitaniaBlancoActivity;
+import com.youngdred.brujowines.TitaniaRosadoActivity;
 import com.youngdred.brujowines.TitaniaTintoActivity;
 import com.youngdred.brujowines.databinding.FragmentInicioBinding;
 
@@ -69,6 +70,7 @@ public class InicioFragment extends Fragment {
                 getActivity().startActivity(new Intent(getActivity(), TitaniaBlancoActivity.class));
                 break;
             case "rosado":
+                getActivity().startActivity(new Intent(getActivity(), TitaniaRosadoActivity.class));
                 break;
         }
     }

@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BrujoWines">
         <activity
+            android:name=".TitaniaRosadoActivity"
+            android:exported="true" />
+        <activity
             android:name=".TitaniaTintoActivity"
             android:exported="true" />
         <activity

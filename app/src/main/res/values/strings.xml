@@ -77,9 +77,18 @@ En boca son persistentes y muy equilibrados entre acidez y grado alcohólico, co
     <string name="titania_tinto_desc_9">Recomendamos disfrutarlo a una temperatura de 12-14 grados con carnes rojas, caza o guisos que nos ayuden a potenciar las agradables sensaciones que nos transmite Titania. Titania nos permite disfrutar de la tipicidad, excelencia y sobre todo exclusividad de la Sonsierra en una simple copa de vino.</string>
 
 
-
-
     <string name="titania_rosado">Titania Rosado</string>
+
+    <string name="titania_rosado_desc_1">
+Titania Rosado 100% tempranilloha sido elaborado en nuestras instalaciones de San Vicente de la Sonsierra en Rioja Alta.</string>
+    <string name="titania_rosado_desc_2">Titania Rosado es un vino obtenido de viñedos de más de 50 años, y las cepas ya son “maduras” es decir saben auto-regularse, para defenderse del estrés hídrico y de la escasez de nutrientes, produciendo racimos pequeños, con elevada cantidad de azúcar y concentración fenólica. TITANIA ROSADO es obtenido mediante un proceso llamado “sangrado”de las uvas de tempranillo que nos servirán para elaborar TITANIA TINTO. Cuando llegan las uvas a la bodega se extrae el mosto nada más entrar en los depósitos, separándolo de los hollejos para no extraer demasiado color, resultando esa tonalidad rosa pálido piel de cebolla y mantener la frescura aromática tan valorada en este tipo de elaboración.</string>
+    <string name="titania_rosado_desc_3">
+Al finalizar el proceso tenemos un rosado muy aromático, floral y una agujamuy finapara culminar un conjunto muy sabroso, con ligeros toques almibarados, melocotón y sensación dulzona siendo totalmente seco.</string>
+    <string name="titania_rosado_desc_4">El Tempranillo en la zona de la Sonsierra Riojana es la variedad más característica y que mejor se adapta debido a las peculiares características tanto de suelo como de clima en tan privilegiada zona, debido a la confluencia de climas tanto atlánticos como mediterráneos, provocados por la existencia al norte de la Sierra Cantabria y al sur del Rio Ebro, y una combinación de suelos pobres arcilloso calcáreos y de cascajo, perfectos para el cultivo de Tempranillo, obteniendo producciones de tempranillo muy bajas y de máxima calidad.</string>
+    <string name="titania_rosado_desc_5">Una vez en el deposito, el mosto rosado comienza la fermentación de manera totalmente espontanea, y durante 25 días y a una temperatura de 12 grados se va transformando el azúcar en alcohol, manteniendo acidez y pH alto, para que la sensación en boca sea de total equilibrio y frescura. Una vez terminada la fermentación permanece en depósitos de hormigón durante 4 meses previos al embotellado para conseguir un vino estable de manera totalmente natural.</string>
+    <string name="titania_rosado_desc_6">Recomendamos disfrutarlo a una temperatura de 6-8 grados con entrantes ligeros, aperitivos, arroces, pasta fresca y pescados, para disfrutar de las agradables sensaciones que nos sugiere Titania Rosado. Titania Rosado nos permite disfrutar de la tipicidad, frutalidad, excelencia y sobre todo exclusividad de la Sonsierra en una simple copa de vino.</string>
+
+
     <string name="titania_logo_text">Logo de Titania</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
