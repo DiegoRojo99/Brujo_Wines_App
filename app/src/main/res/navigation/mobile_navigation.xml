@@ -24,6 +24,12 @@
         tools:layout="@layout/fragment_reservas" />
 
     <fragment
+        android:id="@+id/navigation_pedidos"
+        android:name="com.youngdred.brujowines.ui.pedidos.PedidosFragment"
+        android:label="@string/title_pedidos"
+        tools:layout="@layout/fragment_pedidos" />
+
+    <fragment
         android:id="@+id/navigation_usuario"
         android:name="com.youngdred.brujowines.ui.usuario.UsuarioFragment"
         android:label="@string/title_usuario"

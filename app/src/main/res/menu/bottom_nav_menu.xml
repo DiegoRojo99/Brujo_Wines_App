@@ -17,6 +17,11 @@
         android:title="@string/title_reservas" />
 
     <item
+        android:id="@+id/navigation_pedidos"
+        android:icon="@drawable/ic_mailbox"
+        android:title="@string/title_pedidos" />
+
+    <item
         android:id="@+id/navigation_usuario"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="@string/title_usuario" />

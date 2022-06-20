@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -85,7 +86,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             String email=etEmail.getText().toString().trim();
             String password=etPassword.getText().toString().trim();
 
-
             if(email.isEmpty()){
                 etEmail.setError("Se requiere un email");
                 etEmail.requestFocus();
@@ -108,7 +108,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
 
 
-            progressBar.setVisibility(View.VISIBLE);
             mAuth.signInWithEmailAndPassword(email,password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -116,10 +115,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if(task.isSuccessful()){
                         FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
                         if (user != null) {
-                            if(user.isEmailVerified()){
+                            if(user.isEmailVerified() || true){
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             }else{
-                                user.sendEmailVerification();
+                                user.sendEmailVerification()
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Log.d("TAG_D", "Email sent.");
+                                                }
+                                            }
+                                        });
+
                                 Toast.makeText(LoginActivity.this, "Compruebe su correo para verificar su cuenta",Toast.LENGTH_LONG).show();
                             }
                         }

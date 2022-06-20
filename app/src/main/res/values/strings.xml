@@ -143,4 +143,16 @@ Al finalizar el proceso tenemos un rosado muy aromático, floral y una agujamuy 
     <string name="icono_botella">Icono de Botella</string>
     <string name="icono_termometro">Icono de Termometro</string>
     <string name="icono_estrella">Icono Estrella</string>
+    <string name="titania_blanco_desc_general">Con elegancia, frescura, y equilibrio con los aromas tostados de roble. Diferente a la gran mayoría de vinos blancos en Rioja.</string>
+
+    <string name="titania_rosado_desc_general">Muy aromático, floral y una aguja muy fina para culminar un conjunto muy sabroso, con ligeros toques almibarados, melocotón y sensación dulzona siendo totalmente seco.</string>
+    <string name="titania_tinto_desc_general">Es un vino sedoso, con una estructura en boca potente y con tanino amable que nos deja un impresionante sabor a fruta equilibrada con los toques de coco y café procedente del roble americano, y toques de vainilla y frutos secos y balsámicos procedentes del roble francés.</string>
+    <string name="title_pedidos">Pedidos</string>
+    <string name="realizar_pedido">Realizar Pedido</string>
+    <string name="precio">Precio:</string>
+    <string name="zeroEuros">0€</string>
+    <string name="pedido">Pedido:</string>
+    <string name="pedido_vacio">El pedido esta vacío</string>
+    <string name="mas">+</string>
+    <string name="menos">-</string>
 </resources>

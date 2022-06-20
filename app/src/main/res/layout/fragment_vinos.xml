@@ -73,24 +73,36 @@
                     android:layout_weight="1"
                     android:layout_marginBottom="64dp">
 
-                    <TextView
-                        android:id="@+id/tv_vinos_titania_blanco"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:paddingStart="8dp"
-                        android:paddingTop="8dp"
-                        android:paddingEnd="8dp"
-                        android:textSize="20sp"
-                        android:text="@string/titania_blanco"
-                        android:contentDescription="@string/titania_blanco"/>
+                        <TextView
+                            android:id="@+id/tv_vinos_titania_blanco"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingEnd="8dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:text="@string/titania_blanco"
+                            android:contentDescription="@string/titania_blanco"/>
+
+                        <TextView
+                            android:id="@+id/tv_vinos_info_titania_blanco"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingEnd="8dp"
+                            android:textSize="16sp"
+                            android:text="@string/titania_blanco_desc_general"
+                            android:contentDescription="@string/titania_blanco"/>
 
                     <Button
                         android:id="@+id/button_vinos_titania_blanco"
                         android:layout_width="wrap_content"
-                        android:layout_height="96dp"
-                        android:layout_weight="1"
+                        android:layout_height="48dp"
                         android:textAlignment="center"
                         android:text="@string/titania_blanco" />
 
@@ -101,7 +113,7 @@
                 <LinearLayout
                     android:id="@+id/ll_vinos_titania_rosado"
                     android:layout_width="match_parent"
-                    android:layout_height="320dp"
+                    android:layout_height="360dp"
                     android:orientation="horizontal"
                     android:background="@color/white">
 
@@ -117,7 +129,7 @@
                     <LinearLayout
                         android:id="@+id/ll_vinos_titania_rosado_desc"
                         android:layout_width="match_parent"
-                        android:layout_height="320dp"
+                        android:layout_height="360dp"
                         android:orientation="vertical"
                         android:layout_weight="1"
                         android:layout_marginBottom="64dp">
@@ -125,20 +137,33 @@
                         <TextView
                             android:id="@+id/tv_vinos_titania_rosado"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:paddingStart="8dp"
                             android:paddingTop="8dp"
                             android:paddingEnd="8dp"
                             android:textSize="20sp"
+                            android:textStyle="bold"
                             android:text="@string/titania_rosado"
+                            android:contentDescription="@string/titania_rosado"/>
+
+                        <TextView
+                            android:id="@+id/tv_vinos_info_titania_rosado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingEnd="8dp"
+                            android:textSize="16sp"
+                            android:text="@string/titania_rosado_desc_general"
                             android:contentDescription="@string/titania_rosado"/>
 
                         <Button
                             android:id="@+id/button_vinos_titania_rosado"
                             android:layout_width="wrap_content"
-                            android:layout_height="96dp"
+                            android:layout_height="48dp"
                             android:layout_weight="1"
                             android:layout_marginBottom="16dp"
                             android:textAlignment="center"
@@ -151,7 +176,7 @@
                 <LinearLayout
                     android:id="@+id/ll_vinos_titania_tinto"
                     android:layout_width="match_parent"
-                    android:layout_height="320dp"
+                    android:layout_height="420dp"
                     android:orientation="horizontal"
                     android:layout_marginBottom="32dp">
 
@@ -167,7 +192,7 @@
                     <LinearLayout
                         android:id="@+id/ll_vinos_titania_tinto_desc"
                         android:layout_width="match_parent"
-                        android:layout_height="320dp"
+                        android:layout_height="420dp"
                         android:orientation="vertical"
                         android:layout_weight="1"
                         android:layout_marginBottom="64dp">
@@ -175,20 +200,34 @@
                         <TextView
                             android:id="@+id/tv_vinos_titania_tinto"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:paddingStart="8dp"
                             android:paddingTop="8dp"
                             android:paddingEnd="8dp"
                             android:textSize="20sp"
                             android:text="@string/titania_tinto"
+                            android:textStyle="bold"
                             android:contentDescription="@string/titania_tinto"/>
+
+                        <TextView
+                            android:id="@+id/tv_vinos_info_titania_tinto"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:paddingStart="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingEnd="8dp"
+                            android:textSize="16sp"
+                            android:text="@string/titania_tinto_desc_general"
+                            android:contentDescription="@string/titania_blanco"/>
+
 
                         <Button
                             android:id="@+id/button_vinos_titania_tinto"
                             android:layout_width="wrap_content"
-                            android:layout_height="96dp"
+                            android:layout_height="48dp"
                             android:layout_weight="1"
                             android:textAlignment="center"
                             android:text="@string/titania_tinto" />
