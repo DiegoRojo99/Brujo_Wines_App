@@ -72,7 +72,10 @@ public class PedidosFragment extends Fragment implements View.OnClickListener {
 
     }
 
-
+    public void actualizarPrecio(){
+        int total=30*unidadesBlanco+40*unidadesTinto+25*unidadesRosado;
+        precioTV.setText(String.valueOf(total)+"€");
+    }
 
     public void actualizarVinos(){
         blancoIV.setImageResource(R.drawable.titania_blanco);
@@ -98,6 +101,7 @@ public class PedidosFragment extends Fragment implements View.OnClickListener {
         }else{
             unidadesTinto=0;
         }
+        actualizarPrecio();
     }
 
     public void menosVino(String vino){
