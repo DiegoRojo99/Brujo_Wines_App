@@ -155,4 +155,5 @@ Al finalizar el proceso tenemos un rosado muy aromático, floral y una agujamuy 
     <string name="pedido_vacio">El pedido esta vacío</string>
     <string name="mas">+</string>
     <string name="menos">-</string>
+    <string name="opciones_login">O inicia sesión mediante</string>
 </resources>

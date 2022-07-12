@@ -4,37 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/iv_login_app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/app_name"
-        android:textAlignment="center"
         android:src="@drawable/logo"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    
+
     <EditText
+        android:textColor="@color/black"
+        android:id="@+id/et_login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/et_login_email"
-        android:hint="@string/e_mail"
+        android:layout_marginTop="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="60dp"
+        android:hint="@string/e_mail"
+        android:textColorHint="@color/black"
         android:inputType="textEmailAddress"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_login_app_name"
-        />
+        app:layout_constraintTop_toBottomOf="@id/iv_login_app_name" />
 
 
     <EditText
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/et_login_password"
@@ -63,25 +67,26 @@
         app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/tv_login_password_olvidada"
         android:layout_width="128dp"
         android:layout_height="wrap_content"
-        android:text="@string/password_olvidada"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_login_brujo_wines_login"
-        android:layout_marginTop="25dp"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/password_olvidada"
         android:textAlignment="center"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_login_brujo_wines_login" />
 
     <TextView
         android:id="@+id/tv_login_registrar"
         android:layout_width="128dp"
         android:layout_height="0dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="25dp"
         android:text="@string/registrar"
         android:textAlignment="center"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/tv_login_password_olvidada"
         app:layout_constraintStart_toEndOf="@id/tv_login_password_olvidada"
         app:layout_constraintTop_toBottomOf="@id/btn_login_brujo_wines_login" />
@@ -97,5 +102,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_login_password_olvidada"
+        app:layout_constraintStart_toStartOf="@+id/tv_login_password_olvidada"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:srcCompat="@drawable/google" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="82dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/tv_login_registrar"
+        app:layout_constraintStart_toStartOf="@+id/tv_login_registrar"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:srcCompat="@drawable/facebook" />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/opciones_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_password_olvidada" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
