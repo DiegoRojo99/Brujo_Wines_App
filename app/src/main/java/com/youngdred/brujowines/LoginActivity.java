@@ -1,6 +1,7 @@
 package com.youngdred.brujowines;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -20,18 +21,23 @@ import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
+import com.google.android.gms.auth.api.identity.SignInCredential;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "TAG_TESTING";
     private TextView registrar, passwordOlvidada;
     private EditText etEmail, etPassword;
     private ImageView googleBtn, facebookBtn;
@@ -165,6 +171,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     public void loginGoogle(){
 
+        Log.d(TAG,"1");
         oneTapClient = Identity.getSignInClient(this);
         signInRequest = BeginSignInRequest.builder()
                 .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
@@ -186,7 +193,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onSuccess(BeginSignInResult result) {
                         try {
-
                             startIntentSenderForResult(
                                     result.getPendingIntent().getIntentSender(), REQ_ONE_TAP,
                                     null, 0, 0, 0);
@@ -204,8 +210,55 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQ_ONE_TAP:
+                try {
+                    SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
+                    String idToken = credential.getGoogleIdToken();
+                    String email = credential.getId();
+                    String password = credential.getPassword();
+                    if (idToken !=  null) {
+                        // Got an ID token from Google. Use it to authenticate
+                        // with Firebase.
+                        AuthCredential firebaseCredential = GoogleAuthProvider.getCredential(idToken, null);
+                        mAuth.signInWithCredential(firebaseCredential)
+                                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            // Sign in success, update UI with the signed-in user's information
+                                            Log.d(TAG, "signInWithCredential:success");
+                                            FirebaseUser user = mAuth.getCurrentUser();
+                                            goToInicio();
+                                        } else {
+                                            // If sign in fails, display a message to the user.
+                                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                                            goToInicio();
+                                        }
+                                    }
+                                });
+                    } else if (password != null) {
+                        // Got a saved username and password. Use them to authenticate
+                        // with your backend.
+                        Log.d(TAG, "Got password.");
+                    }
+                } catch (ApiException e) {
+                    // ...
+                }
+                break;
+            default:
+                break;
+        }
+    }
 
     public void loginFacebook(){
         startActivity(new Intent(this,RegisterActivity.class));
+    }
+    public void goToInicio(){
+        startActivity(new Intent(this,MainActivity.class));
     }
 }
