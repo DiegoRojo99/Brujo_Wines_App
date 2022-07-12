@@ -4,17 +4,25 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentSender;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.identity.BeginSignInRequest;
+import com.google.android.gms.auth.api.identity.BeginSignInResult;
+import com.google.android.gms.auth.api.identity.Identity;
+import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private TextView registrar, passwordOlvidada;
     private EditText etEmail, etPassword;
+    private ImageView googleBtn, facebookBtn;
     private Button loginButton;
 
     private FirebaseAuth mAuth;
@@ -34,24 +43,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private FirebaseUser usuario;
 
+    private SignInClient oneTapClient;
+    private BeginSignInRequest signInRequest;
+    private static final int REQ_ONE_TAP = 2;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        registrar=(TextView) findViewById(R.id.tv_login_registrar);
+        registrar=findViewById(R.id.tv_login_registrar);
         registrar.setOnClickListener(this);
 
-        loginButton=(Button) findViewById(R.id.btn_login_brujo_wines_login);
+        loginButton=findViewById(R.id.btn_login_brujo_wines_login);
         loginButton.setOnClickListener(this);
 
-        etEmail=(EditText) findViewById(R.id.et_login_email);
-        etPassword=(EditText) findViewById(R.id.et_login_password);
+        etEmail=findViewById(R.id.et_login_email);
+        etPassword= findViewById(R.id.et_login_password);
 
-        progressBar=(ProgressBar) findViewById(R.id.progressBarLogin);
+        progressBar= findViewById(R.id.progressBarLogin);
 
-        passwordOlvidada=(TextView)findViewById(R.id.tv_login_password_olvidada);
+        passwordOlvidada=findViewById(R.id.tv_login_password_olvidada);
         passwordOlvidada.setOnClickListener(this);
+
+        googleBtn= findViewById(R.id.google_iv);
+        googleBtn.setOnClickListener(this);
+        facebookBtn= findViewById(R.id.facebook_iv);
+        facebookBtn.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         checkIfUserIsLoggedIn();
@@ -78,11 +97,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 loginUsuario();
             }else if(v.getId()==R.id.tv_login_password_olvidada){
                 startActivity(new Intent(this, PasswordOlvidadaActivity.class));
+            }else if(v.getId()==R.id.google_iv){
+                loginGoogle();
+            }else if(v.getId()==R.id.facebook_iv){
+                loginFacebook();
             }
 
     }
 
-        public void loginUsuario(){
+    public void loginUsuario(){
             String email=etEmail.getText().toString().trim();
             String password=etPassword.getText().toString().trim();
 
@@ -139,4 +162,50 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             });
 
         }
+
+    public void loginGoogle(){
+
+        oneTapClient = Identity.getSignInClient(this);
+        signInRequest = BeginSignInRequest.builder()
+                .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
+                        .setSupported(true)
+                        .build())
+                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+                        .setSupported(true)
+                        // Your server's client ID, not your Android client ID.
+                        .setServerClientId(getString(R.string.default_web_client_id))
+                        // Only show accounts previously used to sign in.
+                        .setFilterByAuthorizedAccounts(true)
+                        .build())
+                // Automatically sign in when exactly one credential is retrieved.
+                .setAutoSelectEnabled(true)
+                .build();
+
+        oneTapClient.beginSignIn(signInRequest)
+                .addOnSuccessListener(this, new OnSuccessListener<BeginSignInResult>() {
+                    @Override
+                    public void onSuccess(BeginSignInResult result) {
+                        try {
+
+                            startIntentSenderForResult(
+                                    result.getPendingIntent().getIntentSender(), REQ_ONE_TAP,
+                                    null, 0, 0, 0);
+                        } catch (IntentSender.SendIntentException e) {
+                            Log.e("TAG_TESTING", "Couldn't start One Tap UI: " + e.getLocalizedMessage());
+                        }
+                    }
+                })
+                .addOnFailureListener(this, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // No saved credentials found. Launch the One Tap sign-up flow, or
+                        // do nothing and continue presenting the signed-out UI.
+                        Log.d("TAG_TESTING", e.getLocalizedMessage());
+                    }
+                });
+    }
+
+    public void loginFacebook(){
+        startActivity(new Intent(this,RegisterActivity.class));
+    }
 }
