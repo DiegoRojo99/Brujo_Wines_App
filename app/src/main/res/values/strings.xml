@@ -156,4 +156,11 @@ Al finalizar el proceso tenemos un rosado muy aromático, floral y una agujamuy 
     <string name="mas">+</string>
     <string name="menos">-</string>
     <string name="opciones_login">O inicia sesión mediante</string>
+
+
+    <string name="facebook_app_id">1081574735779941</string>
+    <string name="fb_login_protocol_scheme">fb1081574735779941</string>
+    <string name="facebook_client_token">f3d0dfe5d260627d05ffe29bc107b811</string>
+
+
 </resources>

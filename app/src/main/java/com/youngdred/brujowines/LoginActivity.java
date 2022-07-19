@@ -171,7 +171,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     public void loginGoogle(){
 
-        Log.d(TAG,"1");
         oneTapClient = Identity.getSignInClient(this);
         signInRequest = BeginSignInRequest.builder()
                 .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
