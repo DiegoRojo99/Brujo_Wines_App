@@ -83,8 +83,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         googleBtn= findViewById(R.id.google_iv);
         googleBtn.setOnClickListener(this);
-        facebookBtn= findViewById(R.id.facebook_iv);
-        facebookBtn.setOnClickListener(this);
 
         LoginButton loginButton = findViewById(R.id.login_button_facebook);
         loginButton.setReadPermissions("email", "public_profile");
@@ -133,8 +131,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(this, PasswordOlvidadaActivity.class));
             }else if(v.getId()==R.id.google_iv){
                 loginGoogle();
-            }else if(v.getId()==R.id.facebook_iv){
-                loginFacebook();
             }
 
     }

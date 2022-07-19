@@ -113,27 +113,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:srcCompat="@drawable/google" />
 
-    <ImageView
-        android:id="@+id/facebook_iv"
-        android:layout_width="82dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/google_iv"
-        app:layout_constraintEnd_toEndOf="@+id/tv_login_registrar"
-        app:layout_constraintStart_toStartOf="@+id/tv_login_registrar"
-        app:layout_constraintTop_toTopOf="@+id/google_iv"
-        app:srcCompat="@drawable/facebook" />
-
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button_facebook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/facebook_iv"
-        app:layout_constraintStart_toStartOf="@+id/google_iv"
-        app:layout_constraintTop_toBottomOf="@+id/google_iv" />
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="64dp"
+        app:layout_constraintBottom_toBottomOf="@+id/google_iv"
+        app:layout_constraintStart_toEndOf="@+id/google_iv"
+        app:layout_constraintTop_toTopOf="@+id/google_iv" />
 
     <TextView
         android:textColor="@color/black"
