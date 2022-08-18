@@ -55,12 +55,10 @@ public class ReservasFragment extends Fragment {
 
         reservaFecha1 = binding.includeReservaCata.tvReservaCartaFechaInfo;
         reservaPersonas1 = binding.includeReservaCata.tvReservaCartaPersonasInfo;
-        tipo1 = binding.includeReservaCata.tvCartaReservaTipo;
         cambiarReservaCataBtn = binding.includeReservaCata.verOtraReservaButton;
 
         reservaFecha2 = binding.includeReservaVisita.tvReservaCartaFechaInfo;
         reservaPersonas2 = binding.includeReservaVisita.tvReservaCartaPersonasInfo;
-        tipo2 = binding.includeReservaVisita.tvCartaReservaTipo;
         cambiarReservaVisitaBtn = binding.includeReservaVisita.verOtraReservaButton;
 
         tipo1.setText(R.string.carta_reserva_cata);

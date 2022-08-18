@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_visita_bodegas"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/foto_de_vi_as"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/cancelar_reserva_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ll_carta_pedido_vinos"
+        app:srcCompat="@drawable/barricas" />
+
+    <LinearLayout
+        android:id="@+id/ll_carta_pedido_vinos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_visita_bodegas"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:src="@drawable/titania_blanco"/>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:src="@drawable/titania_tinto"/>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:src="@drawable/titania_rosado"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_carta_pedido"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_visita_bodegas"
+        app:layout_constraintTop_toBottomOf="@+id/ll_carta_pedido_vinos">
+
+        <TextView
+            android:id="@+id/carta_unidades_blanco"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/zero"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/carta_unidades_tinto"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/zero"
+            android:textAlignment="center"/>
+
+
+        <TextView
+            android:id="@+id/carta_unidades_rosado"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/zero"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ver_otra_reserva_button"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ver_otro"
+        app:layout_constraintStart_toEndOf="@+id/iv_visita_bodegas"
+        app:layout_constraintTop_toBottomOf="@+id/ll_carta_pedido" />
+
+    <Button
+        android:id="@+id/cancelar_reserva_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editar_reserva"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintStart_toEndOf="@+id/ver_otra_reserva_button"
+        app:layout_constraintTop_toTopOf="@+id/ver_otra_reserva_button" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

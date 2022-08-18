@@ -121,10 +121,11 @@ Al finalizar el proceso tenemos un rosado muy aromático, floral y una agujamuy 
     <string name="nuevo_tipo_de_reserva">Nuevo Tipo de Reserva:</string>
     <string name="numero_de_personas">Numero de Personas:</string>
     <string name="zero">0</string>
-    <string name="ver_otra_reserva">Ver Otra Reserva</string>
+    <string name="ver_otra_reserva">Ver Otra</string>
+    <string name="ver_otro">Ver Otro</string>
     <string name="Cancelar">Cancelar</string>
     <string name="foto_de_vi_as">Foto de Viñas</string>
-    <string name="editar_reserva">Editar Reserva</string>
+    <string name="editar_reserva">Editar</string>
     <string name="datos_reserva">Datos Reserva:</string>
     <string name="hh_mm">HH:MM</string>
     <string name="dd_mm_yyyy">DD/MM/YYYY</string>
