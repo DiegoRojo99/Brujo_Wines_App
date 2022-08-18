@@ -43,7 +43,7 @@ public class ReservarActivity extends AppCompatActivity {
 
     private int mYear, mMonth, mDay;
 
-    private int mHour, mMinute;
+    private int mHour, mMinute=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +67,9 @@ public class ReservarActivity extends AppCompatActivity {
         final TimePickerDialog timePickerDialog = new TimePickerDialog ( this, new TimePickerDialog.OnTimeSetListener () {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                tiempoEt.setText (hourOfDay + ":" + minute);
+                tiempoEt.setText (hourOfDay + ":00");
             }
-        }, mHour, mMinute, true );
+        }, mHour, 0, true );
 
         timePickerDialog.show ();
     }
@@ -94,7 +94,7 @@ public class ReservarActivity extends AppCompatActivity {
 
     private void realizarReserva(){
 
-        personasEt=(EditText) findViewById(R.id.et_numero_personas_number);
+        personasEt=findViewById(R.id.et_numero_personas_number);
         int numeroPersonas=Integer.parseInt(personasEt.getText().toString().trim());
 
         if(numeroPersonas<0||numeroPersonas>10){
@@ -105,7 +105,7 @@ public class ReservarActivity extends AppCompatActivity {
         }
 
 
-        visitaCataButton=(ToggleButton) findViewById(R.id.toggleButtonCataVisita);
+        visitaCataButton=findViewById(R.id.toggleButtonCataVisita);
         Boolean cataReserva=visitaCataButton.isChecked();
 
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
@@ -136,12 +136,8 @@ public class ReservarActivity extends AppCompatActivity {
                 int hour=Integer.parseInt(hourString.substring(0,index));
                 int minutes=Integer.parseInt(hourString.substring(index+1,hourString.length()));
 
-                if(hour<9||hour>19){
-                    tiempoEt.setError("El horario es de 9:00 a 18:30");
-                    tiempoEt.requestFocus();
-                    return;
-                } else if(hour==18&&minutes>30){
-                    tiempoEt.setError("El horario es de 9:00 a 18:30");
+                if(hour<9||hour>18){
+                    tiempoEt.setError("El horario es de 9:00 a 18:00");
                     tiempoEt.requestFocus();
                     return;
                 }

@@ -35,19 +35,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp">
 
-            <include
-                android:id="@+id/include_reserva_cata"
-                layout="@layout/reserva_carta"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
-
-            <include
-                android:id="@+id/include_reserva_visita"
-                layout="@layout/reserva_carta"
-                android:layout_marginTop="16dp"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
-
             <Button
                 android:id="@+id/btn_reservas_reservar_ahora"
                 android:layout_width="match_parent"
