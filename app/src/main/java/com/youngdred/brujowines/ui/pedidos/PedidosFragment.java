@@ -6,15 +6,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,16 +21,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.youngdred.brujowines.MainActivity;
 import com.youngdred.brujowines.R;
-import com.youngdred.brujowines.Reserva;
-import com.youngdred.brujowines.ReservarActivity;
-import com.youngdred.brujowines.TitaniaTintoActivity;
 import com.youngdred.brujowines.databinding.FragmentPedidosBinding;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class PedidosFragment extends Fragment implements View.OnClickListener {

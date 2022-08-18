@@ -34,13 +34,64 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp">
-
-            <Button
-                android:id="@+id/btn_reservas_reservar_ahora"
+            <ToggleButton
+                android:id="@+id/toggleButtonCataVisita"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:textOn="@string/cata_de_vinos"
+                android:textOff="@string/visita_a_la_bodega"/>
+
+            <TextView
+                android:id="@+id/tv_numero_personas_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/personas" />
+
+            <EditText
+                android:id="@+id/et_numero_personas_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="1"
+                android:inputType="number"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/tv_fecha_reserva_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fecha" />
+
+            <EditText
+                android:id="@+id/et_fecha_reserva_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="15"
+                android:focusable="false"
+                android:hint="DD/MM/YYYY"
+                android:inputType="date"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/tv_fecha_reserva_tiempo_texto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fecha" />
+
+            <EditText
+                android:id="@+id/et_fecha_reserva_tiempo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="15"
+                android:focusable="false"
+                android:hint="HH:00"
+                android:inputType="date"
+                android:minHeight="48dp" />
+
+            <Button
+                android:id="@+id/btn_reservar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/reserva_ahora" />
         </LinearLayout>
     </ScrollView>

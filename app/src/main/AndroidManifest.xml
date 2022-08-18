@@ -23,9 +23,6 @@
             android:name=".DetallesReservaActivity"
             android:exported="true" />
         <activity
-            android:name=".ReservarActivity"
-            android:exported="true" />
-        <activity
             android:name=".PasswordOlvidadaActivity"
             android:exported="true" />
         <activity
